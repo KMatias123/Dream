@@ -10,6 +10,10 @@ import net.minecraft.util.Session;
 import java.lang.reflect.Field;
 import java.net.Proxy;
 
+/**
+ * @author yoink
+ * @since 9/20/2020
+ */
 public class SessionUtil
 {
 	public static Session createSession(String username, String password, Proxy proxy) throws AuthenticationException
