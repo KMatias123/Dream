@@ -11,6 +11,7 @@ import net.minecraft.client.gui.Gui;
 import java.awt.*;
 import java.util.ArrayList;
 
+// TODO: 9/20/2020 fix bug in here
 public class Window
 {
 	private final ArrayList<ModuleButton> buttons = new ArrayList<>();
@@ -38,8 +39,6 @@ public class Window
 
 		int yOffset = Y + H;
 
-		if (Client.moduleManager.getModules(category).size() == 0) return;
-
 		for (Module module : Client.moduleManager.getModules(category))
 		{
 			ModuleButton button = new ModuleButton(module, X, yOffset, W, H);
@@ -58,13 +57,11 @@ public class Window
 		}
 
 		Gui.drawRect(X, Y, X + W, Y + H, new Color(203, 203, 203, 255).getRGB());
-		FontUtil.drawString(category.getName(), X + 4, Y + 4, new Color(57, 57, 57, 255).getRGB());
+		FontUtil.drawString(category.getName(), X + 4, Y + 4, new Color(29, 29, 29, 232).getRGB());
 
 
 		if (open || opening || closing)
 		{
-			Gui.drawRect(X, Y + H, X + W, Y + H + 1, 0xff000000);
-
 			int modY = Y + H;
 
 			int moduleRenderCount = 0;
@@ -123,7 +120,7 @@ public class Window
 		if (closing)
 		{
 			showingButtonCount--;
-			if (showingButtonCount == 0)
+			if (showingButtonCount == 0 || showingButtonCount == 1)
 			{
 				closing = false;
 				open = false;

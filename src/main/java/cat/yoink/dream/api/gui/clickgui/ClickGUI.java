@@ -8,7 +8,6 @@ import org.lwjgl.input.Mouse;
 
 import java.util.ArrayList;
 
-// TODO: 9/20/2020 Rewrite this.
 public class ClickGUI extends GuiScreen
 {
 	private final ArrayList<Window> windows = new ArrayList<>();
@@ -19,9 +18,9 @@ public class ClickGUI extends GuiScreen
 
 		for (Category category : Category.values())
 		{
-			Window window = new Window(category, xOffset, 3, 95, 15);
+			Window window = new Window(category, xOffset, 3, 105, 15);
 			windows.add(window);
-			xOffset += 97;
+			xOffset += 110;
 		}
 	}
 

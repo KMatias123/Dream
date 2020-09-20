@@ -15,6 +15,7 @@ public class ModuleManager
 		modules.add(new ClickGUI("ClickGUI", "Toggle modules by clicking on them", Category.RENDER));
 		modules.add(new CustomFont("CustomFont", "Use a custom font render instead of Minecraft's default", Category.RENDER));
 		modules.add(new PacketMine("PacketMine", "Mine blocks with packets", Category.EXPLOIT));
+
 	}
 
 	public ArrayList<Module> getModules()
