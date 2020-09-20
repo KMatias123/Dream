@@ -1,6 +1,7 @@
 package cat.yoink.dream.api.module;
 
 import cat.yoink.dream.impl.module.exploit.PacketMine;
+import cat.yoink.dream.impl.module.misc.Timer;
 import cat.yoink.dream.impl.module.render.ClickGUI;
 import cat.yoink.dream.impl.module.render.CustomFont;
 
@@ -15,7 +16,7 @@ public class ModuleManager
 		modules.add(new ClickGUI("ClickGUI", "Toggle modules by clicking on them", Category.RENDER));
 		modules.add(new CustomFont("CustomFont", "Use a custom font render instead of Minecraft's default", Category.RENDER));
 		modules.add(new PacketMine("PacketMine", "Mine blocks with packets", Category.EXPLOIT));
-
+		modules.add(new Timer("Timer", "Speeds up your game", Category.MISC));
 	}
 
 	public ArrayList<Module> getModules()
