@@ -11,7 +11,6 @@ import net.minecraft.client.gui.Gui;
 import java.awt.*;
 import java.util.ArrayList;
 
-// TODO: 9/20/2020 fix bug in here
 public class Window
 {
 	private final ArrayList<ModuleButton> buttons = new ArrayList<>();
