@@ -1,6 +1,7 @@
 package cat.yoink.dream;
 
 import cat.yoink.dream.api.EventHandler;
+import cat.yoink.dream.api.gui.clickgui.ClickGUI;
 import cat.yoink.dream.api.module.ModuleManager;
 import cat.yoink.dream.api.setting.SettingManager;
 import cat.yoink.dream.api.util.font.CustomFontRenderer;
@@ -16,6 +17,7 @@ public class Client
 	public static ModuleManager moduleManager;
 	public static SettingManager settingManager;
 	public static CustomFontRenderer customFontRenderer;
+	public static ClickGUI clickGUI;
 
 	@Mod.EventHandler
 	public void initialize(FMLInitializationEvent event)
@@ -23,6 +25,7 @@ public class Client
 		settingManager = new SettingManager();
 		moduleManager = new ModuleManager();
 		customFontRenderer = new CustomFontRenderer(new Font("Verdana", Font.PLAIN, 19), true, false);
+		clickGUI = new ClickGUI();
 
 		MinecraftForge.EVENT_BUS.register(new EventHandler());
 	}

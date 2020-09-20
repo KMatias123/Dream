@@ -28,11 +28,11 @@ public class SettingManager
 		return sets;
 	}
 
-	public Setting getSetting(Module module, String name)
+	public Setting getSetting(String moduleName, String name)
 	{
 		for (Setting setting : settings)
 		{
-			if (setting.getModule().equals(module) && setting.getName().equalsIgnoreCase(name))
+			if (setting.getModule().getName().equalsIgnoreCase(moduleName) && setting.getName().equalsIgnoreCase(name))
 			{
 				return setting;
 			}

@@ -2,6 +2,7 @@ package cat.yoink.dream.api.module;
 
 import cat.yoink.dream.Client;
 import cat.yoink.dream.api.setting.Setting;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 
 public class Module
@@ -11,7 +12,7 @@ public class Module
 	private Category category;
 	private int bind;
 	private boolean enabled;
-
+	public final Minecraft mc = Minecraft.getMinecraft();
 
 	public Module(String name, Category category)
 	{

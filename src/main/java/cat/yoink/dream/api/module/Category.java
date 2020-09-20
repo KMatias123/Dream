@@ -2,10 +2,10 @@ package cat.yoink.dream.api.module;
 
 public enum Category
 {
-	COMBAT("Combat"),
-	EXPLOIT("Exploit"),
+//	COMBAT("Combat"),
+//	EXPLOIT("Exploit"),
 	RENDER("Visuals"),
-	MOVEMENT("Movement"),
+//	MOVEMENT("Movement"),
 	MISC("Miscellaneous");
 
 	private String name;

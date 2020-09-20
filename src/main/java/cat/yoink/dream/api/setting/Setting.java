@@ -97,7 +97,7 @@ public class Setting
 		}
 	}
 
-	public Setting(String name, Module module, int intValue, int intMinValue, int intMaxValue)
+	private Setting(String name, Module module, int intValue, int intMinValue, int intMaxValue)
 	{
 		setName(name);
 		setModule(module);
@@ -107,7 +107,7 @@ public class Setting
 		setType(SettingType.INTEGER);
 	}
 
-	public Setting(String name, Module module, boolean boolValue)
+	private Setting(String name, Module module, boolean boolValue)
 	{
 		setName(name);
 		setModule(module);
@@ -115,7 +115,7 @@ public class Setting
 		setType(SettingType.BOOLEAN);
 	}
 
-	public Setting(String name, Module module, String enumValue, ArrayList<String> enumValues)
+	private Setting(String name, Module module, String enumValue, ArrayList<String> enumValues)
 	{
 		setName(name);
 		setModule(module);
