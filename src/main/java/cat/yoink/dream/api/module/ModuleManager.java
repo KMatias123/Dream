@@ -1,6 +1,5 @@
 package cat.yoink.dream.api.module;
 
-import cat.yoink.dream.impl.module.misc.*;
 import cat.yoink.dream.impl.module.render.ClickGUI;
 import cat.yoink.dream.impl.module.render.CustomFont;
 
@@ -12,10 +11,6 @@ public class ModuleManager
 
 	public ModuleManager()
 	{
-		for (int i = 0; i < 10; i++)
-		{
-			modules.add(new SampleModule("Name", "Description", Category.MISC));
-		}
 		modules.add(new ClickGUI("ClickGUI", "Toggle modules by clicking on them", Category.RENDER));
 		modules.add(new CustomFont("CustomFont", "Use a custom font render instead of Minecraft's default", Category.RENDER));
 	}
