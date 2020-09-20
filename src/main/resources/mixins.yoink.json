@@ -5,6 +5,7 @@
   "refmap": "mixins.yoink.refmap.json",
   "mixins": [
     "MinecraftMixin",
+    "NetworkManagerMixin",
     "TimerMixin"
   ]
 }
