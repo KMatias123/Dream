@@ -1,5 +1,7 @@
 package cat.yoink.dream.api.module;
 
+import cat.yoink.dream.Client;
+import cat.yoink.dream.api.setting.Setting;
 import net.minecraftforge.common.MinecraftForge;
 
 public class Module
@@ -46,6 +48,11 @@ public class Module
 	{
 		if (isEnabled()) disable();
 		else enable();
+	}
+
+	public void addSetting(Setting setting)
+	{
+		Client.settingManager.addSetting(setting);
 	}
 
 
