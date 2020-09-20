@@ -2,6 +2,7 @@ package cat.yoink.dream.api.module;
 
 import cat.yoink.dream.impl.module.combat.Criticals;
 import cat.yoink.dream.impl.module.exploit.PacketMine;
+import cat.yoink.dream.impl.module.misc.ChatSuffix;
 import cat.yoink.dream.impl.module.misc.Timer;
 import cat.yoink.dream.impl.module.movement.LongJump;
 import cat.yoink.dream.impl.module.render.ClickGUI;
@@ -25,6 +26,7 @@ public class ModuleManager
 		modules.add(new Timer("Timer", "Speeds up your game", Category.MISC));
 		modules.add(new Criticals("Criticals", "Deal critical hits without jumping", Category.COMBAT));
 		modules.add(new LongJump("LongJump", "Jumps far", Category.MOVEMENT));
+		modules.add(new ChatSuffix("ChatSuffix", "Adds a suffix to your chat messages", Category.MISC));
 	}
 
 	public ArrayList<Module> getModules()
