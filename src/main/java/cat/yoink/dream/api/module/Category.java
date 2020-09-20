@@ -1,5 +1,9 @@
 package cat.yoink.dream.api.module;
 
+/**
+ * @author yoink
+ * @since 9/20/2020
+ */
 public enum Category
 {
 	COMBAT("Combat"),

@@ -8,6 +8,10 @@ import cat.yoink.dream.impl.module.render.CustomFont;
 
 import java.util.ArrayList;
 
+/**
+ * @author yoink
+ * @since 9/20/2020
+ */
 public class ModuleManager
 {
 	private final ArrayList<Module> modules = new ArrayList<>();

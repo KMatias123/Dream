@@ -7,6 +7,10 @@ import org.spongepowered.asm.mixin.Mixins;
 
 import java.util.Map;
 
+/**
+ * @author yoink
+ * @since 9/20/2020
+ */
 @IFMLLoadingPlugin.MCVersion("1.12.2")
 public class MixinLoader implements IFMLLoadingPlugin
 {

@@ -7,6 +7,10 @@ import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 
+/**
+ * @author yoink
+ * @since 9/20/2020
+ */
 public class BindButton extends SettingButton
 {
 	private final Module module;

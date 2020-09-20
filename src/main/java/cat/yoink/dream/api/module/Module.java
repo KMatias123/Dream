@@ -5,6 +5,10 @@ import cat.yoink.dream.api.setting.Setting;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 
+/**
+ * @author yoink
+ * @since 9/20/2020
+ */
 public class Module
 {
 	private String name;

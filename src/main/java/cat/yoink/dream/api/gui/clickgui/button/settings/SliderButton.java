@@ -9,6 +9,10 @@ import cat.yoink.dream.api.util.font.FontUtil;
 import java.awt.*;
 import java.text.DecimalFormat;
 
+/**
+ * @author yoink
+ * @since 9/20/2020
+ */
 public class SliderButton extends SettingButton
 {
 	private final Setting setting;

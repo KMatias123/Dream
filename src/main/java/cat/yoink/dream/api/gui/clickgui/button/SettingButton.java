@@ -6,6 +6,10 @@ import net.minecraft.client.Minecraft;
 
 import java.awt.*;
 
+/**
+ * @author yoink
+ * @since 9/20/2020
+ */
 public class SettingButton
 {
 	public final Minecraft mc = Minecraft.getMinecraft();

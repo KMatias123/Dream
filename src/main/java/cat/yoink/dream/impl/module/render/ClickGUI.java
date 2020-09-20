@@ -10,6 +10,10 @@ import org.lwjgl.input.Keyboard;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * @author yoink
+ * @since 9/20/2020
+ */
 public class ClickGUI extends Module
 {
 	public ClickGUI(String name, String description, Category category)

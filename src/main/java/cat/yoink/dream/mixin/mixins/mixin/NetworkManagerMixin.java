@@ -11,6 +11,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+/**
+ * @author yoink
+ * @since 9/20/2020
+ */
 @Mixin(NetworkManager.class)
 public class NetworkManagerMixin
 {

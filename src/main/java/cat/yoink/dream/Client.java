@@ -11,6 +11,10 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
 import java.awt.*;
 
+/**
+ * @author yoink
+ * @since 9/20/2020
+ */
 @Mod(modid = "dream", name = "Dream", version = "b1")
 public class Client
 {

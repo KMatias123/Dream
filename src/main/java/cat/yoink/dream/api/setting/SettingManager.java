@@ -4,6 +4,10 @@ import cat.yoink.dream.api.module.Module;
 
 import java.util.ArrayList;
 
+/**
+ * @author yoink
+ * @since 9/20/2020
+ */
 public class SettingManager
 {
 	private final ArrayList<Setting> settings = new ArrayList<>();

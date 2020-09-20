@@ -8,6 +8,10 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author yoink
+ * @since 9/20/2020
+ */
 public class CustomFontRenderer extends CustomFont
 {
 	protected CharData[] boldChars = new CharData[256];

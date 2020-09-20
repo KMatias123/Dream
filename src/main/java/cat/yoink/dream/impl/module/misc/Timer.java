@@ -9,6 +9,10 @@ import cat.yoink.dream.mixin.mixins.accessor.ITimer;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
+/**
+ * @author yoink
+ * @since 9/20/2020
+ */
 public class Timer extends Module
 {
 	private final Setting speed = new Setting.Builder(SettingType.INTEGER)

@@ -11,6 +11,10 @@ import net.minecraft.client.gui.Gui;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * @author yoink
+ * @since 9/20/2020
+ */
 public class Window
 {
 	private final ArrayList<ModuleButton> buttons = new ArrayList<>();

@@ -7,6 +7,10 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import org.lwjgl.opengl.GL11;
 
+/**
+ * @author yoink
+ * @since 9/20/2020
+ */
 public class RenderUtil
 {
 	public static void drawBox(AxisAlignedBB box, float r, float g, float b, float a)

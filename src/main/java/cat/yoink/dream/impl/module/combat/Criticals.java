@@ -7,6 +7,10 @@ import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.client.CPacketUseEntity;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+/**
+ * @author yoink
+ * @since 9/20/2020
+ */
 public class Criticals extends Module
 {
 	public Criticals(String name, String description, Category category)

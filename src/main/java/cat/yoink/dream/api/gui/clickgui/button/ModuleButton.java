@@ -15,6 +15,10 @@ import net.minecraft.client.gui.ScaledResolution;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * @author yoink
+ * @since 9/20/2020
+ */
 public class ModuleButton
 {
 	private final Minecraft mc = Minecraft.getMinecraft();
