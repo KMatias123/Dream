@@ -3,6 +3,7 @@ package cat.yoink.dream.api.module;
 import cat.yoink.dream.impl.module.combat.Criticals;
 import cat.yoink.dream.impl.module.exploit.PacketMine;
 import cat.yoink.dream.impl.module.misc.Timer;
+import cat.yoink.dream.impl.module.movement.LongJump;
 import cat.yoink.dream.impl.module.render.ClickGUI;
 import cat.yoink.dream.impl.module.render.CustomFont;
 
@@ -23,6 +24,7 @@ public class ModuleManager
 		modules.add(new PacketMine("PacketMine", "Mine blocks with packets", Category.EXPLOIT));
 		modules.add(new Timer("Timer", "Speeds up your game", Category.MISC));
 		modules.add(new Criticals("Criticals", "Deal critical hits without jumping", Category.COMBAT));
+		modules.add(new LongJump("LongJump", "Jumps far", Category.MOVEMENT));
 	}
 
 	public ArrayList<Module> getModules()
