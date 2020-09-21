@@ -1,0 +1,61 @@
+package cat.yoink.dream.api.command;
+
+import cat.yoink.dream.api.util.LoggerUtil;
+import cat.yoink.dream.impl.command.Help;
+
+import java.util.ArrayList;
+
+/**
+ * @author yoink
+ * @since 9/21/2020
+ */
+public class CommandManager
+{
+	private final ArrayList<Command> commands = new ArrayList<>();
+	private String prefix = ".";
+
+	public CommandManager()
+	{
+		commands.add(new Help("Help", new String[]{"h", "help"}, "help"));
+	}
+
+	public void runCommand(String args)
+	{
+		boolean found = false;
+		String[] split = args.split(" ");
+		String startCommand = split[0];
+		String arguments = args.substring(startCommand.length()).trim();
+
+		for (Command command : getCommands())
+		{
+			for (String alias : command.getAlias())
+			{
+				if (startCommand.equals(getPrefix() + alias))
+				{
+					command.onTrigger(arguments);
+					found = true;
+				}
+			}
+		}
+
+		if (!found)
+		{
+			LoggerUtil.sendMessage("Unknown command");
+		}
+	}
+
+	public ArrayList<Command> getCommands()
+	{
+		return commands;
+	}
+
+	public String getPrefix()
+	{
+		return prefix;
+	}
+
+	public void setPrefix(String prefix)
+	{
+		this.prefix = prefix;
+	}
+}
