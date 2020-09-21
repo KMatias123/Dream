@@ -90,25 +90,27 @@ public class LongJump extends Module
 	@SubscribeEvent
 	public void onJump(LivingEvent.LivingJumpEvent event)
 	{
-		if (event.getEntity() == mc.player)
+		if ((mc.player != null && mc.world != null) && event.getEntity() == mc.player && (mc.player.movementInput.moveForward != 0f || mc.player.movementInput.moveStrafe != 0f))
 		{
-			if ((mc.player.movementInput.moveForward != 0f || mc.player.movementInput.moveStrafe != 0f))
-			{
-				jumped = true;
-				boostable = true;
-			}
+			jumped = true;
+			boostable = true;
 		}
 	}
 
 	private double getDirection()
 	{
 		float rotationYaw = mc.player.rotationYaw;
+
 		if (mc.player.moveForward < 0f) rotationYaw += 180f;
+
 		float forward = 1f;
+
 		if (mc.player.moveForward < 0f) forward = -0.5f;
 		else if (mc.player.moveForward > 0f) forward = 0.5f;
+
 		if (mc.player.moveStrafing > 0f) rotationYaw -= 90f * forward;
 		if (mc.player.moveStrafing < 0f) rotationYaw += 90f * forward;
+
 		return Math.toRadians(rotationYaw);
 	}
 }

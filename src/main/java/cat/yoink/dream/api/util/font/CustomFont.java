@@ -8,12 +8,12 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 /**
- * @author yoink
- * @since 9/20/2020
+ * @see <a href="https://github.com/zeroeightysix/KAMI/blob/master/src/main/java/me/zeroeightsix/kami/gui/font/CFont.java">CFont</a>
+ * Updated by yoink 9/21/2020
  */
 public class CustomFont
 {
-	private float imgSize = 512;
+	private final float imgSize = 512;
 	protected CharData[] charData = new CharData[256];
 	protected Font font;
 	protected boolean antiAlias;
@@ -122,29 +122,14 @@ public class CustomFont
 		GL11.glVertex2d(x + width, y);
 	}
 
-	public int getStringHeight(String text)
-	{
-		return getHeight();
-	}
-
-	public int getHeight()
-	{
-		return (this.fontHeight - 8) / 2;
-	}
-
 	public int getStringWidth(String text)
 	{
 		int width = 0;
 		for (char c : text.toCharArray())
 		{
-			if ((c < this.charData.length) && (c >= 0)) width += this.charData[c].width - 8 + this.charOffset;
+			if (c < this.charData.length) width += this.charData[c].width - 8 + this.charOffset;
 		}
 		return width / 2;
-	}
-
-	public boolean isAntiAlias()
-	{
-		return this.antiAlias;
 	}
 
 	public void setAntiAlias(boolean antiAlias)
@@ -181,15 +166,11 @@ public class CustomFont
 		tex = setupTexture(font, this.antiAlias, this.fractionalMetrics, this.charData);
 	}
 
-	protected class CharData
+	protected static class CharData
 	{
 		public int width;
 		public int height;
 		public int storedX;
 		public int storedY;
-
-		protected CharData()
-		{
-		}
 	}
 }
