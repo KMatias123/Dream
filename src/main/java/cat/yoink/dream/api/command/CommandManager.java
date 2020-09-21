@@ -2,6 +2,7 @@ package cat.yoink.dream.api.command;
 
 import cat.yoink.dream.api.util.LoggerUtil;
 import cat.yoink.dream.impl.command.Help;
+import cat.yoink.dream.impl.command.Login;
 import cat.yoink.dream.impl.command.Prefix;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class CommandManager
 	{
 		commands.add(new Help("Help", new String[]{"h", "help"}, "help"));
 		commands.add(new Prefix("Prefix", new String[]{"prefix"}, "prefix <char>"));
+		commands.add(new Login("Login", new String[]{"login"}, "login <email> <password>"));
 	}
 
 	public void runCommand(String args)

@@ -30,7 +30,7 @@ public class SessionUtil
 				auth.getAuthenticatedToken(), "mojang");
 	}
 
-	public static void login(String email, String password)
+	public static boolean login(String email, String password)
 	{
 		try
 		{
@@ -38,9 +38,17 @@ public class SessionUtil
 			Field field = Minecraft.class.getDeclaredField("session");
 			field.setAccessible(true);
 			field.set(Minecraft.getMinecraft(), session);
+
+			return true;
 		}
 		catch (Exception ignored)
 		{
+			return false;
 		}
+	}
+
+	public static Session getSession()
+	{
+		return Minecraft.getMinecraft().getSession();
 	}
 }
