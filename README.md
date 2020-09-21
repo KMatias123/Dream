@@ -5,6 +5,9 @@
 <p align="center">See the <a href="LICENSE">LICENSE</a> for more details.</p>  
   
 ---  
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ab952a3f8a4f4eb7bec9bd0117c95575)](https://app.codacy.com/manual/Katatje/Dream?utm_source=github.com&utm_medium=referral&utm_content=Katatje/Dream&utm_campaign=Badge_Grade_Dashboard)
+
   
 ## Installing
 
