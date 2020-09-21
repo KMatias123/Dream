@@ -2,6 +2,7 @@ package cat.yoink.dream.api.command;
 
 import cat.yoink.dream.api.util.LoggerUtil;
 import cat.yoink.dream.impl.command.Help;
+import cat.yoink.dream.impl.command.Prefix;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,7 @@ public class CommandManager
 	public CommandManager()
 	{
 		commands.add(new Help("Help", new String[]{"h", "help"}, "help"));
+		commands.add(new Prefix("Prefix", new String[]{"prefix"}, "prefix <char>"));
 	}
 
 	public void runCommand(String args)
