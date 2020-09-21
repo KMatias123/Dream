@@ -8,14 +8,14 @@
 
 ## Installing
 
-  - Install MinecraftForge.
-  - Download the latest version from the releases tab. (If available)
-  - Navigate to your `.minecraft/mods` folder.
-  - Put the downloaded file in your mods folder.
-  - Launch MinecraftForge.
+- Install MinecraftForge.
+- Download the latest version from the releases tab. (If available)
+- Navigate to your `.minecraft/mods` folder.
+- Put the downloaded file in your mods folder.
+- Launch MinecraftForge.
 
 ## Building
 
-  - Close the repository. `git clone https://github.com/Katatje/Dream.git`
-  - Open the cloned folder in Intellij.
-  - Add `-Dfml.coreMods.load=cat.yoink.dream.mixin.loader.MixinLoader` to VM options.  
+- Close the repository. `git clone https://github.com/Katatje/Dream.git`
+- Open the cloned folder in Intellij.
+- Add `-Dfml.coreMods.load=cat.yoink.dream.mixin.loader.MixinLoader` to VM options.  
