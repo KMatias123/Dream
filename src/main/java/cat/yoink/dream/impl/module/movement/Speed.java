@@ -179,7 +179,7 @@ public class Speed extends Module
 		{
 			if (MoveUtil.isMoving() && mc.player.onGround)
 			{
-				for (double d = 0.0625; d < speed.getIntegerValue(); d += 0.262)
+				for (double d = 0.0625; d < (speed.getIntegerValue() / 10f); d += 0.262)
 				{
 					float rotation = mc.player.prevRotationYaw + (mc.player.rotationYaw - mc.player.prevRotationYaw) * mc.getRenderPartialTicks();
 
