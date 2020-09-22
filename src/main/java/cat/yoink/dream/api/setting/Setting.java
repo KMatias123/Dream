@@ -85,6 +85,13 @@ public class Setting
 			return this;
 		}
 
+		public Builder addEnumValue(String enumValue)
+		{
+			if (enumValues == null) enumValues = new ArrayList<>();
+			enumValues.add(enumValue);
+			return this;
+		}
+
 		public Setting build()
 		{
 			switch (type)
