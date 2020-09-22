@@ -5,6 +5,7 @@ import cat.yoink.dream.impl.module.exploit.PacketMine;
 import cat.yoink.dream.impl.module.misc.ChatSuffix;
 import cat.yoink.dream.impl.module.misc.Timer;
 import cat.yoink.dream.impl.module.movement.LongJump;
+import cat.yoink.dream.impl.module.movement.Strafe;
 import cat.yoink.dream.impl.module.render.ClickGUI;
 import cat.yoink.dream.impl.module.render.CustomFont;
 
@@ -27,6 +28,7 @@ public class ModuleManager
 		modules.add(new Criticals("Criticals", "Deal critical hits without jumping", Category.COMBAT));
 		modules.add(new LongJump("LongJump", "Jumps far", Category.MOVEMENT));
 		modules.add(new ChatSuffix("ChatSuffix", "Adds a suffix to your chat messages", Category.MISC));
+		modules.add(new Strafe("Strafe", "Allows you to move faster", Category.MOVEMENT));
 	}
 
 	public ArrayList<Module> getModules()
