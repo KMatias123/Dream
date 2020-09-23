@@ -5,7 +5,7 @@ import net.minecraft.init.MobEffects;
 
 import java.util.Objects;
 
-public class MoveUtil
+public class PlayerUtil
 {
 	public static double vanillaSpeed()
 	{
