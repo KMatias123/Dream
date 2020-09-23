@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * @author yoink
  * @since 9/20/2020
  */
-@Mixin(NetworkManager.class)
+@Mixin(value = NetworkManager.class, priority = 634756347)
 public class NetworkManagerMixin
 {
 	@Inject(method = "channelRead0", at = @At("HEAD"), cancellable = true)

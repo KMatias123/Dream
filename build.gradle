@@ -37,7 +37,7 @@ minecraft
     version = "1.12.2-14.23.5.2847"
     runDir = "run"
     mappings = "stable_39"
-    coreMod = "cat.yoink.yoinkhack.mixin.loader.MixinLoader"
+    coreMod = "cat.yoink.dream.mixin.loader.MixinLoader"
 }
 
 repositories
@@ -106,7 +106,7 @@ shadowJar
 mixin
 {
     defaultObfuscationEnv searge
-    add sourceSets.main, "mixins.yoink.refmap.json"
+    add sourceSets.main, "mixins.dream.refmap.json"
 }
 
 reobf
@@ -123,11 +123,11 @@ jar
     manifest
     {
         attributes(
-                "MixinConfigs": "mixins.yoinkhack.json",
+                "MixinConfigs": "mixins.dreamclient.json",
                 "TweakClass": "org.spongepowered.asm.launch.MixinTweaker",
                 "TweakOrder": 0,
                 "FMLCorePluginContainsFMLMod": "true",
-                "FMLCorePlugin": "cat.yoink.yoinkhack.mixin.loader.MixinLoader",
+                "FMLCorePlugin": "cat.yoink.dream.mixin.loader.MixinLoader",
                 "ForceLoadAsMod": "true",
         )
     }

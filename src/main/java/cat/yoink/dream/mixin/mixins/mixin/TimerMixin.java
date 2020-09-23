@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Shadow;
  * @author yoink
  * @since 9/20/2020
  */
-@Mixin(Timer.class)
+@Mixin(value = Timer.class, priority = 634756347)
 public class TimerMixin implements ITimer
 {
 	@Shadow private float tickLength;

@@ -2,7 +2,7 @@
   "required": true,
   "compatibilityLevel": "JAVA_8",
   "package": "cat.yoink.dream.mixin.mixins.mixin",
-  "refmap": "mixins.yoink.refmap.json",
+  "refmap": "mixins.dream.refmap.json",
   "mixins": [
     "MinecraftMixin",
     "NetworkManagerMixin",

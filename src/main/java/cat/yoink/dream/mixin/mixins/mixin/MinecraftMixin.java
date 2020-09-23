@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Shadow;
  * @author yoink
  * @since 9/20/2020
  */
-@Mixin(Minecraft.class)
+@Mixin(value = Minecraft.class, priority =  634756347)
 public class MinecraftMixin implements IMinecraft
 {
 	@Final @Shadow private Timer timer;

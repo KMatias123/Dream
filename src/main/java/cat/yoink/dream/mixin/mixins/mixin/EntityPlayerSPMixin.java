@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * @author yoink
  * @since 9/20/2020
  */
-@Mixin(value = EntityPlayerSP.class)
+@Mixin(value = EntityPlayerSP.class, priority = 634756347)
 public class EntityPlayerSPMixin extends AbstractClientPlayer
 {
 	public EntityPlayerSPMixin(World worldIn, GameProfile playerProfile)
@@ -31,10 +31,8 @@ public class EntityPlayerSPMixin extends AbstractClientPlayer
 	{
 		MoveEvent event = new MoveEvent(moverType, x, y, z);
 		MinecraftForge.EVENT_BUS.post(event);
-		if (!event.isCanceled())
-		{
-			super.move(event.getType(), event.getX(), event.getY(), event.getZ());
-		}
+
+		if (!event.isCanceled()) super.move(event.getType(), event.getX(), event.getY(), event.getZ());
 	}
 
 	@Inject(method = "onUpdateWalkingPlayer", at = @At("HEAD"), cancellable = true)
