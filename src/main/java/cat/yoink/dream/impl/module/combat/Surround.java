@@ -38,7 +38,7 @@ public class Surround extends Module
             .addEnumValue("Off")
             .build();
 
-    public List<Vec3d> positions = new ArrayList<>(Arrays.asList(
+    private final List<Vec3d> positions = new ArrayList<>(Arrays.asList(
             new Vec3d(1, -1, 0),
             new Vec3d(-1, -1, 0),
             new Vec3d(0, -1, 1),
