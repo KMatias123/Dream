@@ -4,7 +4,7 @@ import cat.yoink.dream.api.module.Category;
 import cat.yoink.dream.api.module.Module;
 import cat.yoink.dream.api.setting.Setting;
 import cat.yoink.dream.api.setting.SettingType;
-import cat.yoink.dream.api.util.MoveUtil;
+import cat.yoink.dream.api.util.PlayerUtil;
 import cat.yoink.dream.impl.event.MoveEvent;
 import cat.yoink.dream.impl.event.WalkEvent;
 import cat.yoink.dream.mixin.mixins.accessor.IMinecraft;
@@ -66,7 +66,7 @@ public class Speed extends Module
 
 	public void onEnable()
 	{
-		currentSpeed = MoveUtil.vanillaSpeed();
+		currentSpeed = PlayerUtil.vanillaSpeed();
 		
 		if (!mc.player.onGround) currentStage = 3;
 	}
@@ -104,16 +104,16 @@ public class Speed extends Module
 			float strafe = mc.player.movementInput.moveStrafe;
 			float yaw = mc.player.rotationYaw;
 
-			if (currentStage == 1 && MoveUtil.isMoving())
+			if (currentStage == 1 && PlayerUtil.isMoving())
 			{
 				currentStage = 2;
-				currentSpeed = 1.18f * MoveUtil.vanillaSpeed() - 0.01;
+				currentSpeed = 1.18f * PlayerUtil.vanillaSpeed() - 0.01;
 			}
 			else if (currentStage == 2)
 			{
 				currentStage = 3;
 
-				if (MoveUtil.isMoving())
+				if (PlayerUtil.isMoving())
 				{
 					event.setY(mc.player.motionY = 0.4);
 					if (cooldown > 0) --cooldown;
@@ -123,7 +123,7 @@ public class Speed extends Module
 			else if (currentStage == 3)
 			{
 				currentStage = 4;
-				currentSpeed = distance - (0.66 * (distance - MoveUtil.vanillaSpeed()));
+				currentSpeed = distance - (0.66 * (distance - PlayerUtil.vanillaSpeed()));
 			}
 			else
 			{
@@ -132,7 +132,7 @@ public class Speed extends Module
 				currentSpeed = distance - distance / 159.0;
 			}
 
-			currentSpeed = Math.max(currentSpeed, MoveUtil.vanillaSpeed());
+			currentSpeed = Math.max(currentSpeed, PlayerUtil.vanillaSpeed());
 
 			if (forward == 0.0f && strafe == 0.0f)
 			{
@@ -177,7 +177,7 @@ public class Speed extends Module
 		}
 		else
 		{
-			if (MoveUtil.isMoving() && mc.player.onGround)
+			if (PlayerUtil.isMoving() && mc.player.onGround)
 			{
 				for (double d = 0.0625; d < (speed.getIntegerValue() / 10f); d += 0.262)
 				{
