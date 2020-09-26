@@ -1,5 +1,6 @@
 package cat.yoink.dream.api.module;
 
+import cat.yoink.dream.impl.module.combat.AutoLog;
 import cat.yoink.dream.impl.module.combat.AutoTrap;
 import cat.yoink.dream.impl.module.combat.Criticals;
 import cat.yoink.dream.impl.module.combat.Surround;
@@ -35,6 +36,7 @@ public class ModuleManager
 		modules.add(new Surround("Surround", "Places blocks around you", Category.COMBAT));
 		modules.add(new AutoTrap("AutoTrap", "Traps players", Category.COMBAT));
 		modules.add(new Blink("Blink", "Fake lag", Category.EXPLOIT));
+		modules.add(new AutoLog("AutoLog", "Automatically logs out when your health is low", Category.COMBAT));
 	}
 
 	public ArrayList<Module> getModules()
