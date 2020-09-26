@@ -1,5 +1,6 @@
 package cat.yoink.dream.api.module;
 
+import cat.yoink.dream.impl.module.combat.AutoTrap;
 import cat.yoink.dream.impl.module.combat.Criticals;
 import cat.yoink.dream.impl.module.combat.Surround;
 import cat.yoink.dream.impl.module.exploit.PacketMine;
@@ -31,6 +32,7 @@ public class ModuleManager
 		modules.add(new ChatSuffix("ChatSuffix", "Adds a suffix to your chat messages", Category.MISC));
 		modules.add(new Speed("Strafe", "Allows you to move faster", Category.MOVEMENT));
 		modules.add(new Surround("Surround", "Places blocks around you", Category.COMBAT));
+		modules.add(new AutoTrap("AutoTrap", "Traps players", Category.COMBAT));
 	}
 
 	public ArrayList<Module> getModules()
