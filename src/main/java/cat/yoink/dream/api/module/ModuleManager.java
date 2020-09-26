@@ -3,6 +3,7 @@ package cat.yoink.dream.api.module;
 import cat.yoink.dream.impl.module.combat.AutoTrap;
 import cat.yoink.dream.impl.module.combat.Criticals;
 import cat.yoink.dream.impl.module.combat.Surround;
+import cat.yoink.dream.impl.module.exploit.Blink;
 import cat.yoink.dream.impl.module.exploit.PacketMine;
 import cat.yoink.dream.impl.module.misc.ChatSuffix;
 import cat.yoink.dream.impl.module.misc.Timer;
@@ -33,6 +34,7 @@ public class ModuleManager
 		modules.add(new Speed("Strafe", "Allows you to move faster", Category.MOVEMENT));
 		modules.add(new Surround("Surround", "Places blocks around you", Category.COMBAT));
 		modules.add(new AutoTrap("AutoTrap", "Traps players", Category.COMBAT));
+		modules.add(new Blink("Blink", "Fake lag", Category.EXPLOIT));
 	}
 
 	public ArrayList<Module> getModules()
