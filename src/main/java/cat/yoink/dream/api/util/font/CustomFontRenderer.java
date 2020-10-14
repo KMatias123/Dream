@@ -9,6 +9,7 @@ import java.awt.*;
 /**
  * @see <a href="https://github.com/zeroeightysix/KAMI/blob/master/src/main/java/me/zeroeightsix/kami/gui/font/CFontRenderer.java">CFontRenderer</a>
  * Updated by yoink 9/21/2020
+ * Updated by yoink 10/14/2020
  */
 public class CustomFontRenderer extends CustomFont
 {
@@ -25,14 +26,14 @@ public class CustomFontRenderer extends CustomFont
 		setupBoldItalicIDs();
 	}
 
-	public void drawStringWithShadow(String text, double x, double y, int color)
+	public void drawString(String text, float x, float y, int color)
 	{
-		drawString(text, x + 1D, y + 1D, color, true);
 		drawString(text, x, y, color, false);
 	}
 
-	public void drawString(String text, float x, float y, int color)
+	public void drawStringWithShadow(String text, double x, double y, int color)
 	{
+		drawString(text, x + 1D, y + 1D, color, true);
 		drawString(text, x, y, color, false);
 	}
 
@@ -52,23 +53,11 @@ public class CustomFontRenderer extends CustomFont
 
 		x -= 1;
 		y -= 2;
-		if (text == null)
-		{
-			return;
-		}
-		if (color == 553648127)
-		{
-			color = 16777215;
-		}
-		if ((color & 0xFC000000) == 0)
-		{
-			color |= -16777216;
-		}
+		if (text == null) return;
+		if (color == 553648127) color = 16777215;
+		if ((color & 0xFC000000) == 0) color |= -16777216;
 
-		if (shadow)
-		{
-			color = (color & 0xFCFCFC) >> 2 | color & 0xFF000000;
-		}
+		if (shadow) color = (color & 0xFCFCFC) >> 2 | color & 0xFF000000;
 
 		CharData[] currentData = this.charData;
 		float alpha = (color >> 24 & 0xFF) / 255.0F;
@@ -90,7 +79,7 @@ public class CustomFontRenderer extends CustomFont
 		for (int i = 0; i < size; i++)
 		{
 			char character = text.charAt(i);
-			if (character == '\u00A7')
+			if (character == '§')
 			{
 				int colorIndex = 21;
 				try
@@ -107,30 +96,23 @@ public class CustomFontRenderer extends CustomFont
 					underline = false;
 					strikethrough = false;
 					GlStateManager.bindTexture(tex.getGlTextureId());
-					// GL11.glBindTexture(GL11.GL_TEXTURE_2D,
-					// tex.getGlTextureId());
 					currentData = this.charData;
 					if (colorIndex < 0) colorIndex = 15;
 					if (shadow) colorIndex += 16;
-					int colorcode = this.colorCode[colorIndex];
-					GlStateManager.color((colorcode >> 16 & 0xFF) / 255.0F, (colorcode >> 8 & 0xFF) / 255.0F, (colorcode & 0xFF) / 255.0F, alpha);
+					int cCode = this.colorCode[colorIndex];
+					GlStateManager.color((cCode >> 16 & 0xFF) / 255.0F, (cCode >> 8 & 0xFF) / 255.0F, (cCode & 0xFF) / 255.0F, alpha);
 				}
-//				else if (colorIndex == 16) ;
 				else if (colorIndex == 17)
 				{
 					bold = true;
 					if (italic)
 					{
 						GlStateManager.bindTexture(texItalicBold.getGlTextureId());
-						// GL11.glBindTexture(GL11.GL_TEXTURE_2D,
-						// texItalicBold.getGlTextureId());
 						currentData = this.boldItalicChars;
 					}
 					else
 					{
 						GlStateManager.bindTexture(texBold.getGlTextureId());
-						// GL11.glBindTexture(GL11.GL_TEXTURE_2D,
-						// texBold.getGlTextureId());
 						currentData = this.boldChars;
 					}
 				}
@@ -142,15 +124,11 @@ public class CustomFontRenderer extends CustomFont
 					if (bold)
 					{
 						GlStateManager.bindTexture(texItalicBold.getGlTextureId());
-						// GL11.glBindTexture(GL11.GL_TEXTURE_2D,
-						// texItalicBold.getGlTextureId());
 						currentData = this.boldItalicChars;
 					}
 					else
 					{
 						GlStateManager.bindTexture(texItalic.getGlTextureId());
-						// GL11.glBindTexture(GL11.GL_TEXTURE_2D,
-						// texItalic.getGlTextureId());
 						currentData = this.italicChars;
 					}
 				}
@@ -162,8 +140,6 @@ public class CustomFontRenderer extends CustomFont
 					strikethrough = false;
 					GlStateManager.color((color >> 16 & 0xFF) / 255.0F, (color >> 8 & 0xFF) / 255.0F, (color & 0xFF) / 255.0F, alpha);
 					GlStateManager.bindTexture(tex.getGlTextureId());
-					// GL11.glBindTexture(GL11.GL_TEXTURE_2D,
-					// tex.getGlTextureId());
 					currentData = this.charData;
 				}
 				i++;
@@ -173,10 +149,8 @@ public class CustomFontRenderer extends CustomFont
 				GL11.glBegin(4);
 				drawChar(currentData, character, (float) x, (float) y);
 				GL11.glEnd();
-				if (strikethrough)
-					drawLine(x, y + currentData[character].height / 2f, x + currentData[character].width - 8.0D, y + currentData[character].height / 2f);
-				if (underline)
-					drawLine(x, y + currentData[character].height - 2.0D, x + currentData[character].width - 8.0D, y + currentData[character].height - 2.0D);
+				if (strikethrough) drawLine(x, y + currentData[character].height / 2f, x + currentData[character].width - 8.0D, y + currentData[character].height / 2f);
+				if (underline) drawLine(x, y + currentData[character].height - 2.0D, x + currentData[character].width - 8.0D, y + currentData[character].height - 2.0D);
 				x += currentData[character].width - 8 + this.charOffset;
 			}
 		}
@@ -187,10 +161,8 @@ public class CustomFontRenderer extends CustomFont
 	@Override
 	public int getStringWidth(String text)
 	{
-		if (text == null)
-		{
-			return 0;
-		}
+		if (text == null) return 0;
+
 		int width = 0;
 		CharData[] currentData = this.charData;
 		int size = text.length();
@@ -198,14 +170,8 @@ public class CustomFontRenderer extends CustomFont
 		for (int i = 0; i < size; i++)
 		{
 			char character = text.charAt(i);
-			if (character == '\u00A7')
-			{
-				i++;
-			}
-			else if (character < currentData.length)
-			{
-				width += currentData[character].width - 8 + this.charOffset;
-			}
+			if (character == '§') i++;
+			else if (character < currentData.length) width += currentData[character].width - 8 + this.charOffset;
 		}
 
 		return width / 2;
@@ -260,10 +226,7 @@ public class CustomFontRenderer extends CustomFont
 			int green = (index >> 1 & 0x1) * 170 + noClue;
 			int blue = (index & 0x1) * 170 + noClue;
 
-			if (index == 6)
-			{
-				red += 85;
-			}
+			if (index == 6) red += 85;
 
 			if (index >= 16)
 			{

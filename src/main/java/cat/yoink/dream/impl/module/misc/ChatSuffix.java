@@ -22,6 +22,6 @@ public class ChatSuffix extends Module
 			if (event.getMessage().startsWith(s)) return;
 		}
 
-		event.setMessage(event.getMessage() + " \uFF5C \u1D05\u0280\u1D07\u1D00\u1D0D");
+		event.setMessage(event.getMessage() + " ｜ ᴅʀᴇᴀᴍ");
 	}
 }
