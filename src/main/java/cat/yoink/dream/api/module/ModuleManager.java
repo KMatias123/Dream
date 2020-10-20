@@ -10,6 +10,7 @@ import cat.yoink.dream.impl.module.misc.ChatSuffix;
 import cat.yoink.dream.impl.module.misc.Timer;
 import cat.yoink.dream.impl.module.movement.LongJump;
 import cat.yoink.dream.impl.module.movement.Speed;
+import cat.yoink.dream.impl.module.movement.Sprint;
 import cat.yoink.dream.impl.module.render.ClickGUI;
 import cat.yoink.dream.impl.module.render.CustomFont;
 
@@ -31,6 +32,7 @@ public class ModuleManager
 		modules.add(new Timer("Timer", "Speeds up your game", Category.MISC));
 		modules.add(new Criticals("Criticals", "Deal critical hits without jumping", Category.COMBAT));
 		modules.add(new LongJump("LongJump", "Jumps far", Category.MOVEMENT));
+		modules.add(new Sprint("Sprint", "Sprints, Obviously", Category.MOVEMENT));
 		modules.add(new ChatSuffix("ChatSuffix", "Adds a suffix to your chat messages", Category.MISC));
 		modules.add(new Speed("Strafe", "Allows you to move faster", Category.MOVEMENT));
 		modules.add(new Surround("Surround", "Places blocks around you", Category.COMBAT));
