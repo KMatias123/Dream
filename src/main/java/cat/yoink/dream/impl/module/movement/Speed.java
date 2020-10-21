@@ -3,7 +3,6 @@ package cat.yoink.dream.impl.module.movement;
 import cat.yoink.dream.api.module.Category;
 import cat.yoink.dream.api.module.Module;
 import cat.yoink.dream.api.setting.Setting;
-import cat.yoink.dream.api.setting.SettingType;
 import cat.yoink.dream.api.util.PlayerUtil;
 import cat.yoink.dream.impl.event.MoveEvent;
 import cat.yoink.dream.impl.event.WalkEvent;
@@ -13,41 +12,24 @@ import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
+import java.util.Arrays;
+
 /**
  * @author yoink
  * @since 9/21/2020
  */
 public class Speed extends Module
 {
-	private final Setting mode = new Setting.Builder(SettingType.ENUM)
-			.setName("Mode")
-			.setModule(this)
-			.addEnumValue("TP")
-			.addEnumValue("Strafe")
-			.setEnumValue("Strafe")
-			.build();
+	private final Setting mode = new Setting("Mode", this, Arrays.asList(
+			"Strafe",
+			"TP"
+	));
 
-	private final Setting speed = new Setting.Builder(SettingType.INTEGER)
-			.setName("Speed")
-			.setModule(this)
-			.setIntegerValue(9)
-			.setMinIntegerValue(1)
-			.setMaxIntegerValue(100)
-			.build();
+	private final Setting speed = new Setting("Speed", this, 9, 1, 100);
 
-	private final Setting useTimer = new Setting.Builder(SettingType.BOOLEAN)
-			.setName("UseTimer")
-			.setModule(this)
-			.setBooleanValue(false)
-			.build();
+	private final Setting useTimer = new Setting("UseTimer", this, false);
 
-	private final Setting timerSpeed = new Setting.Builder(SettingType.INTEGER)
-			.setName("TimerSpeed")
-			.setModule(this)
-			.setIntegerValue(7)
-			.setMinIntegerValue(1)
-			.setMaxIntegerValue(20)
-			.build();
+	private final Setting timerSpeed = new Setting("TimerSpeed", this, 7, 1, 20);
 	
 	private int currentStage;
 	private double currentSpeed;

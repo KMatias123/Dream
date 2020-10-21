@@ -22,12 +22,11 @@ public class ClickGUI extends Module
 
 		setBind(Keyboard.KEY_RSHIFT);
 
-		addSetting(new Setting.Builder(SettingType.ENUM)
-				.setName("Color")
-				.setModule(this)
-				.setEnumValue("Red")
-				.setEnumValues(new ArrayList<>(Arrays.asList("Red", "Green", "Blue")))
-				.build());
+		addSetting(new Setting("Color", this, Arrays.asList(
+				"Red",
+				"Green",
+				"Blue"
+		)));
 	}
 
 	@Override

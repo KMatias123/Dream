@@ -3,7 +3,6 @@ package cat.yoink.dream.impl.module.combat;
 import cat.yoink.dream.api.module.Category;
 import cat.yoink.dream.api.module.Module;
 import cat.yoink.dream.api.setting.Setting;
-import cat.yoink.dream.api.setting.SettingType;
 import cat.yoink.dream.api.util.PlayerUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -18,19 +17,9 @@ import java.util.List;
 
 public class AutoTrap extends Module
 {
-    private final Setting blocksPerTick = new Setting.Builder(SettingType.INTEGER)
-            .setName("BPT")
-            .setModule(this)
-            .setIntegerValue(1)
-            .setMinIntegerValue(1)
-            .setMaxIntegerValue(10)
-            .build();
+    private final Setting blocksPerTick = new Setting("BPT", this, 1, 1, 10);
 
-    private final Setting disable = new Setting.Builder(SettingType.BOOLEAN)
-            .setName("Disable")
-            .setModule(this)
-            .setBooleanValue(true)
-            .build();
+    private final Setting disable = new Setting("Disable", this, true);
 
     private final List<Vec3d> positions = new ArrayList<>(Arrays.asList(
             new Vec3d(0, -1, -1),
