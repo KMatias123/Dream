@@ -9,6 +9,7 @@ import cat.yoink.dream.impl.module.exploit.PacketMine;
 import cat.yoink.dream.impl.module.misc.ChatSuffix;
 import cat.yoink.dream.impl.module.misc.Timer;
 import cat.yoink.dream.impl.module.movement.LongJump;
+import cat.yoink.dream.impl.module.movement.ReverseStep;
 import cat.yoink.dream.impl.module.movement.Speed;
 import cat.yoink.dream.impl.module.movement.Sprint;
 import cat.yoink.dream.impl.module.render.ClickGUI;
@@ -39,6 +40,7 @@ public class ModuleManager
 		modules.add(new AutoTrap("AutoTrap", "Traps players", Category.COMBAT));
 		modules.add(new Blink("Blink", "Fake lag", Category.EXPLOIT));
 		modules.add(new AutoLog("AutoLog", "Automatically logs out when your health is low", Category.COMBAT));
+		modules.add(new ReverseStep("ReverseStep", "Moves you faster down", Category.MOVEMENT));
 	}
 
 	public ArrayList<Module> getModules()
