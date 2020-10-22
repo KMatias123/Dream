@@ -16,6 +16,9 @@ public class Sprint extends Module {
     @SubscribeEvent
     public void onUpdate(final TickEvent.ClientTickEvent event) {
         if (nullCheck()) return;
+
+        if (mc.player.movementInput.moveForward == 0f && mc.player.movementInput.moveStrafe == 0f) return;
+
         if (!mc.player.isSprinting()) {
             mc.player.setSprinting(true);
         }
