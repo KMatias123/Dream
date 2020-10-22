@@ -3,6 +3,7 @@ package cat.yoink.dream.impl.module.movement;
 import cat.yoink.dream.api.module.Category;
 import cat.yoink.dream.api.module.Module;
 import cat.yoink.dream.api.setting.Setting;
+import cat.yoink.dream.api.util.PlayerUtil;
 import cat.yoink.dream.impl.event.MoveEvent;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -54,7 +55,7 @@ public class LongJump extends Module
 			}
 
 			if (!(mc.player.movementInput.moveForward != 0f || mc.player.movementInput.moveStrafe != 0f)) return;
-			double yaw = getDirection();
+			double yaw = PlayerUtil.getDirection();
 			mc.player.motionX = -Math.sin(yaw) * (((float) Math.sqrt(mc.player.motionX * mc.player.motionX + mc.player.motionZ * mc.player.motionZ)) * (boostable ? (speed.getIntegerValue() / 10f) : 1f));
 			mc.player.motionZ = Math.cos(yaw) * (((float) Math.sqrt(mc.player.motionX * mc.player.motionX + mc.player.motionZ * mc.player.motionZ)) * (boostable ? (speed.getIntegerValue() / 10f) : 1f));
 
@@ -84,22 +85,5 @@ public class LongJump extends Module
 			jumped = true;
 			boostable = true;
 		}
-	}
-
-	private double getDirection()
-	{
-		float rotationYaw = mc.player.rotationYaw;
-
-		if (mc.player.moveForward < 0f) rotationYaw += 180f;
-
-		float forward = 1f;
-
-		if (mc.player.moveForward < 0f) forward = -0.5f;
-		else if (mc.player.moveForward > 0f) forward = 0.5f;
-
-		if (mc.player.moveStrafing > 0f) rotationYaw -= 90f * forward;
-		if (mc.player.moveStrafing < 0f) rotationYaw += 90f * forward;
-
-		return Math.toRadians(rotationYaw);
 	}
 }

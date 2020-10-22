@@ -22,6 +22,7 @@ public class Speed extends Module
 {
 	private final Setting mode = new Setting("Mode", this, Arrays.asList(
 			"Strafe",
+			"YPort",
 			"TP"
 	));
 
@@ -30,12 +31,15 @@ public class Speed extends Module
 	private final Setting useTimer = new Setting("UseTimer", this, false);
 
 	private final Setting timerSpeed = new Setting("TimerSpeed", this, 7, 1, 20);
-	
+
+	private final Setting yPortAmount = new Setting("YPortAmount", this, 4, 1, 10);
+
 	private int currentStage;
 	private double currentSpeed;
 	private double distance;
 	private int cooldown;
-	
+	private int jumps;
+
 	public Speed(String name, String description, Category category)
 	{
 		super(name, description, category);
@@ -44,12 +48,13 @@ public class Speed extends Module
 		addSetting(speed);
 		addSetting(useTimer);
 		addSetting(timerSpeed);
+		addSetting(yPortAmount);
 	}
 
 	public void onEnable()
 	{
 		currentSpeed = PlayerUtil.vanillaSpeed();
-		
+
 		if (!mc.player.onGround) currentStage = 3;
 	}
 
@@ -67,7 +72,8 @@ public class Speed extends Module
 	{
 		if (nullCheck()) return;
 
-		if (useTimer.getBooleanValue()) ((ITimer) ((IMinecraft) mc).getTimer()).setTickLength(50f / ((timerSpeed.getIntegerValue() + 100) / 100f));
+		if (useTimer.getBooleanValue())
+			((ITimer) ((IMinecraft) mc).getTimer()).setTickLength(50f / ((timerSpeed.getIntegerValue() + 100) / 100f));
 		else ((ITimer) ((IMinecraft) mc).getTimer()).setTickLength(50f);
 	}
 
@@ -157,7 +163,7 @@ public class Speed extends Module
 				event.setZ(0.0);
 			}
 		}
-		else
+		else if (mode.getEnumValue().equalsIgnoreCase("TP"))
 		{
 			if (PlayerUtil.isMoving() && mc.player.onGround)
 			{
@@ -167,21 +173,51 @@ public class Speed extends Module
 
 					if (mc.player.movementInput.moveForward != 0.0f)
 					{
-						if (mc.player.movementInput.moveStrafe > 0.0f) rotation += (float)(mc.player.movementInput.moveForward > 0.0f ? -45 : 45);
-						else if (mc.player.movementInput.moveStrafe < 0.0f) rotation += (float)(mc.player.movementInput.moveForward > 0.0f ? 45 : -45);
+						if (mc.player.movementInput.moveStrafe > 0.0f)
+							rotation += (float) (mc.player.movementInput.moveForward > 0.0f ? -45 : 45);
+						else if (mc.player.movementInput.moveStrafe < 0.0f)
+							rotation += (float) (mc.player.movementInput.moveForward > 0.0f ? 45 : -45);
 
 						mc.player.movementInput.moveStrafe = 0.0f;
 
 						if (mc.player.movementInput.moveForward > 0.0f) mc.player.movementInput.moveForward = 1.0f;
-						else if (mc.player.movementInput.moveForward < 0.0f) mc.player.movementInput.moveForward = -1.0f;
+						else if (mc.player.movementInput.moveForward < 0.0f)
+							mc.player.movementInput.moveForward = -1.0f;
 					}
 
 					double cos = Math.cos(Math.toRadians(rotation + 90.0f));
 					double sin = Math.sin(Math.toRadians(rotation + 90.0f));
-					mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX + (mc.player.movementInput.moveForward * d * cos + (double)mc.player.movementInput.moveStrafe * d * sin), mc.player.posY, mc.player.posZ + (mc.player.movementInput.moveForward * d * sin - (double)mc.player.movementInput.moveStrafe * d * cos), mc.player.onGround));
+					mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX + (mc.player.movementInput.moveForward * d * cos + (double) mc.player.movementInput.moveStrafe * d * sin), mc.player.posY, mc.player.posZ + (mc.player.movementInput.moveForward * d * sin - (double) mc.player.movementInput.moveStrafe * d * cos), mc.player.onGround));
 				}
 				mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX + mc.player.motionX, 0.0, mc.player.posZ + mc.player.motionZ, mc.player.onGround));
 			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onWalk(WalkEvent event)
+	{
+		if (nullCheck()) return;
+
+		if (mode.getEnumValue().equalsIgnoreCase("YPort"))
+		{
+			if (mc.player.movementInput.moveForward == 0f && mc.player.movementInput.moveStrafe == 0f) return;
+
+			if (jumps >= yPortAmount.getIntegerValue() && mc.player.onGround) jumps = 0;
+
+			if (mc.player.onGround)
+			{
+				mc.player.motionY = (jumps <= 1) ? 0.42 : 0.4;
+				float f = mc.player.rotationYaw * 0.017453292f;
+				mc.player.motionX -= Math.sin(f) * 0.2f;
+				mc.player.motionZ += Math.cos(f) * 0.2f;
+				jumps++;
+			}
+			else if (jumps <= 1) mc.player.motionY = -5.0;
+
+			double yaw = PlayerUtil.getDirection();
+			mc.player.motionX = -Math.sin(yaw) * Math.sqrt(mc.player.motionX * mc.player.motionX + mc.player.motionZ * mc.player.motionZ);
+			mc.player.motionZ = Math.cos(yaw) * Math.sqrt(mc.player.motionX * mc.player.motionX + mc.player.motionZ * mc.player.motionZ);
 		}
 	}
 }
