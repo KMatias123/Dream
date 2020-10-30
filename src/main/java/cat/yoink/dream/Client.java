@@ -2,6 +2,7 @@ package cat.yoink.dream;
 
 import cat.yoink.dream.api.EventHandler;
 import cat.yoink.dream.api.command.CommandManager;
+import cat.yoink.dream.api.config.Config;
 import cat.yoink.dream.api.gui.clickgui.ClickGUI;
 import cat.yoink.dream.api.module.ModuleManager;
 import cat.yoink.dream.api.setting.SettingManager;
@@ -34,6 +35,9 @@ public class Client
 		customFontRenderer = new CustomFontRenderer(new Font("Verdana", Font.PLAIN, 19), true, false);
 		clickGUI = new ClickGUI();
 
+		Config.loadConfig();
+
+		Runtime.getRuntime().addShutdownHook(new Config());
 		MinecraftForge.EVENT_BUS.register(new EventHandler());
 	}
 }
