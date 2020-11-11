@@ -8,8 +8,10 @@ import java.util.ArrayList;
  * @author yoink
  * @since 9/20/2020
  */
-public class SettingManager
+public enum SettingManager
 {
+	INSTANCE;
+
 	private final ArrayList<Setting> settings = new ArrayList<>();
 
 	public void addSetting(Setting setting)

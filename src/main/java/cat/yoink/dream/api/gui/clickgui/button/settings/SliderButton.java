@@ -4,6 +4,7 @@ import cat.yoink.dream.Client;
 import cat.yoink.dream.api.gui.clickgui.button.SettingButton;
 import cat.yoink.dream.api.module.Module;
 import cat.yoink.dream.api.setting.Setting;
+import cat.yoink.dream.api.setting.SettingManager;
 import cat.yoink.dream.api.util.font.FontUtil;
 
 import java.awt.*;
@@ -39,7 +40,7 @@ public class SliderButton extends SettingButton
 		if (isHover(getX(), getY(), getW(), getH() - 1, mX, mY))
 		{
 			Client.clickGUI.drawGradient(getX() + (sliderWidth) + 6, getY(), getX() + getW(), getY() + getH(), new Color(220, 220, 220, 232).getRGB(), new Color(218, 218, 218, 232).getRGB());
-			switch (Client.settingManager.getSetting("ClickGUI", "Color").getEnumValue())
+			switch (SettingManager.INSTANCE.getSetting("ClickGUI", "Color").getEnumValue())
 			{
 				case "Red":
 					Client.clickGUI.drawGradient(getX(), getY(), getX() + (sliderWidth) + 6, getY() + getH(), new Color(210, 30, 30, 232).getRGB(), new Color(206, 30, 30, 232).getRGB());
@@ -57,7 +58,7 @@ public class SliderButton extends SettingButton
 		else
 		{
 			Client.clickGUI.drawGradient(getX() + (sliderWidth) + 6, getY(), getX() + getW(), getY() + getH(), new Color(240, 240, 240, 232).getRGB(), new Color(238, 238, 238, 232).getRGB());
-			switch (Client.settingManager.getSetting("ClickGUI", "Color").getEnumValue())
+			switch (SettingManager.INSTANCE.getSetting("ClickGUI", "Color").getEnumValue())
 			{
 				case "Red":
 					Client.clickGUI.drawGradient(getX(), getY(), getX() + (sliderWidth) + 6, getY() + getH(), new Color(220, 30, 30, 232).getRGB(), new Color(216, 30, 30, 232).getRGB());

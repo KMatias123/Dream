@@ -2,6 +2,7 @@ package cat.yoink.dream.api.gui.clickgui.button;
 
 import cat.yoink.dream.Client;
 import cat.yoink.dream.api.module.Module;
+import cat.yoink.dream.api.setting.SettingManager;
 import net.minecraft.client.Minecraft;
 
 import java.awt.*;
@@ -52,7 +53,7 @@ public class SettingButton
 	{
 		if (isHover(getX(), getY(), getW(), getH() - 1, mX, mY))
 		{
-			switch (Client.settingManager.getSetting("ClickGUI", "Color").getEnumValue())
+			switch (SettingManager.INSTANCE.getSetting("ClickGUI", "Color").getEnumValue())
 			{
 				case "Red":
 					Client.clickGUI.drawGradient(X, Y, X + W, Y + H, new Color(210, 30, 30, 232).getRGB(), new Color(206, 30, 30, 232).getRGB());
@@ -69,7 +70,7 @@ public class SettingButton
 		}
 		else
 		{
-			switch (Client.settingManager.getSetting("ClickGUI", "Color").getEnumValue())
+			switch (SettingManager.INSTANCE.getSetting("ClickGUI", "Color").getEnumValue())
 			{
 				case "Red":
 					Client.clickGUI.drawGradient(X, Y, X + W, Y + H, new Color(220, 30, 30, 232).getRGB(), new Color(216, 30, 30, 232).getRGB());

@@ -4,6 +4,7 @@ import cat.yoink.dream.Client;
 import cat.yoink.dream.api.module.Module;
 import cat.yoink.dream.api.module.ModuleManager;
 import cat.yoink.dream.api.setting.Setting;
+import cat.yoink.dream.api.setting.SettingManager;
 import cat.yoink.dream.api.util.FileUtil;
 import net.minecraft.client.Minecraft;
 
@@ -58,7 +59,7 @@ public class Config extends Thread
                 try
                 {
                     String[] split = s.split(":");
-                    saveSetting(Client.settingManager.getSetting(split[1], split[0]), split[2]);
+                    saveSetting(SettingManager.INSTANCE.getSetting(split[1], split[0]), split[2]);
                 }
                 catch (Exception e)
                 {
@@ -76,7 +77,7 @@ public class Config extends Thread
     {
         ArrayList<String> content = new ArrayList<>();
 
-        for (Setting setting : Client.settingManager.getSettings())
+        for (Setting setting : SettingManager.INSTANCE.getSettings())
         {
             switch (setting.getType())
             {

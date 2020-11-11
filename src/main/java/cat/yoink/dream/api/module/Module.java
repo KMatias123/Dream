@@ -2,6 +2,7 @@ package cat.yoink.dream.api.module;
 
 import cat.yoink.dream.Client;
 import cat.yoink.dream.api.setting.Setting;
+import cat.yoink.dream.api.setting.SettingManager;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -62,7 +63,7 @@ public class Module
 
 	public void addSetting(Setting setting)
 	{
-		Client.settingManager.addSetting(setting);
+		SettingManager.INSTANCE.addSetting(setting);
 	}
 
 

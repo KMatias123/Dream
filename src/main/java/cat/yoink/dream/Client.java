@@ -20,14 +20,12 @@ import java.awt.*;
 @Mod(modid = "dream", name = "Dream", version = "b1")
 public class Client
 {
-	public static SettingManager settingManager;
 	public static CustomFontRenderer customFontRenderer;
 	public static ClickGUI clickGUI;
 
 	@Mod.EventHandler
 	public void initialize(FMLInitializationEvent event)
 	{
-		settingManager = new SettingManager();
 		customFontRenderer = new CustomFontRenderer(new Font("Verdana", Font.PLAIN, 19), true, true);
 		clickGUI = new ClickGUI();
 

@@ -7,6 +7,7 @@ import cat.yoink.dream.api.gui.clickgui.button.settings.EnumButton;
 import cat.yoink.dream.api.gui.clickgui.button.settings.SliderButton;
 import cat.yoink.dream.api.module.Module;
 import cat.yoink.dream.api.setting.Setting;
+import cat.yoink.dream.api.setting.SettingManager;
 import cat.yoink.dream.api.setting.SettingType;
 import cat.yoink.dream.api.util.font.FontUtil;
 import net.minecraft.client.Minecraft;
@@ -42,7 +43,7 @@ public class ModuleButton
 		H = h;
 
 		int n = 0;
-		for (Setting setting : Client.settingManager.getSettings(module))
+		for (Setting setting : SettingManager.INSTANCE.getSettings(module))
 		{
 			SettingButton settingButton = null;
 
@@ -78,7 +79,7 @@ public class ModuleButton
 		{
 			if (isHover(X, Y, W, H - 1, mX, mY))
 			{
-				switch (Client.settingManager.getSetting("ClickGUI", "Color").getEnumValue())
+				switch (SettingManager.INSTANCE.getSetting("ClickGUI", "Color").getEnumValue())
 				{
 					case "Red":
 						Client.clickGUI.drawGradient(X, Y, X + W, Y + H, new Color(210, 30, 30, 232).getRGB(), new Color(206, 30, 30, 232).getRGB());
@@ -95,7 +96,7 @@ public class ModuleButton
 			}
 			else
 			{
-				switch (Client.settingManager.getSetting("ClickGUI", "Color").getEnumValue())
+				switch (SettingManager.INSTANCE.getSetting("ClickGUI", "Color").getEnumValue())
 				{
 					case "Red":
 						Client.clickGUI.drawGradient(X, Y, X + W , Y + H, new Color(220, 30, 30, 232).getRGB(), new Color(216, 30, 30, 232).getRGB());
