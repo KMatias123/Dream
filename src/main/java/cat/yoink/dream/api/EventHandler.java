@@ -18,7 +18,7 @@ public class EventHandler
 	@SubscribeEvent
 	public void onKeyInput(InputEvent.KeyInputEvent event)
 	{
-		if (!Keyboard.getEventKeyState()) return;
+		if (!Keyboard.getEventKeyState() || Keyboard.getEventKey() == Keyboard.KEY_NONE) return;
 
 		for (Module module : ModuleManager.INSTANCE.getModules())
 		{
