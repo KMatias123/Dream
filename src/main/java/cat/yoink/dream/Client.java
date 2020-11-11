@@ -32,7 +32,7 @@ public class Client
 		commandManager = new CommandManager();
 		settingManager = new SettingManager();
 		moduleManager = new ModuleManager();
-		customFontRenderer = new CustomFontRenderer(new Font("Verdana", Font.PLAIN, 19), true, false);
+		customFontRenderer = new CustomFontRenderer(new Font("Verdana", Font.PLAIN, 19), true, true);
 		clickGUI = new ClickGUI();
 
 		Config.loadConfig();
