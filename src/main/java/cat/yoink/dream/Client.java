@@ -20,7 +20,6 @@ import java.awt.*;
 @Mod(modid = "dream", name = "Dream", version = "b1")
 public class Client
 {
-	public static ModuleManager moduleManager;
 	public static SettingManager settingManager;
 	public static CustomFontRenderer customFontRenderer;
 	public static ClickGUI clickGUI;
@@ -29,7 +28,6 @@ public class Client
 	public void initialize(FMLInitializationEvent event)
 	{
 		settingManager = new SettingManager();
-		moduleManager = new ModuleManager();
 		customFontRenderer = new CustomFontRenderer(new Font("Verdana", Font.PLAIN, 19), true, true);
 		clickGUI = new ClickGUI();
 

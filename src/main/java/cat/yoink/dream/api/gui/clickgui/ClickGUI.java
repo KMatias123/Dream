@@ -2,6 +2,7 @@ package cat.yoink.dream.api.gui.clickgui;
 
 import cat.yoink.dream.Client;
 import cat.yoink.dream.api.module.Category;
+import cat.yoink.dream.api.module.ModuleManager;
 import net.minecraft.client.gui.GuiScreen;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -95,7 +96,7 @@ public class ClickGUI extends GuiScreen
 			window.close();
 		}
 
-		Client.moduleManager.getModule("ClickGUI").disable();
+		ModuleManager.INSTANCE.getModule("ClickGUI").disable();
 	}
 
 	private void doScroll()

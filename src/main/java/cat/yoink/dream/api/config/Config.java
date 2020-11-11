@@ -2,6 +2,7 @@ package cat.yoink.dream.api.config;
 
 import cat.yoink.dream.Client;
 import cat.yoink.dream.api.module.Module;
+import cat.yoink.dream.api.module.ModuleManager;
 import cat.yoink.dream.api.setting.Setting;
 import cat.yoink.dream.api.util.FileUtil;
 import net.minecraft.client.Minecraft;
@@ -27,7 +28,7 @@ public class Config extends Thread
     {
         if (!mainFolder.exists() && !mainFolder.mkdirs()) System.out.println("Failed to create config folder");
 
-        try { FileUtil.saveFile(new File(mainFolder.getAbsolutePath(), ENABLED_MODULES), Client.moduleManager.getEnabledModules().stream().map(Module::getName).collect(Collectors.toCollection(ArrayList::new))); }
+        try { FileUtil.saveFile(new File(mainFolder.getAbsolutePath(), ENABLED_MODULES), ModuleManager.INSTANCE.getEnabledModules().stream().map(Module::getName).collect(Collectors.toCollection(ArrayList::new))); }
         catch (IOException e) { e.printStackTrace(); }
 
         try { FileUtil.saveFile(new File(mainFolder.getAbsolutePath(), SETTINGS), getSettings()); }
@@ -44,7 +45,7 @@ public class Config extends Thread
             {
                 try
                 {
-                    Client.moduleManager.getModule(s).enable();
+                    ModuleManager.INSTANCE.getModule(s).enable();
                 }
                 catch (Exception e)
                 {

@@ -1,6 +1,7 @@
 package cat.yoink.dream.api.util.font;
 
 import cat.yoink.dream.Client;
+import cat.yoink.dream.api.module.ModuleManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 
@@ -86,6 +87,6 @@ public class FontUtil
 
 	private static boolean customFont()
 	{
-		return Client.moduleManager.getModule("CustomFont").isEnabled();
+		return ModuleManager.INSTANCE.getModule("CustomFont").isEnabled();
 	}
 }

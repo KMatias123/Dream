@@ -22,11 +22,13 @@ import java.util.stream.Collectors;
  * @author yoink
  * @since 9/20/2020
  */
-public class ModuleManager
+public enum ModuleManager
 {
+	INSTANCE;
+
 	private final ArrayList<Module> modules = new ArrayList<>();
 
-	public ModuleManager()
+	ModuleManager()
 	{
 		modules.add(new ClickGUI("ClickGUI", "Toggle modules by clicking on them", Category.RENDER));
 		modules.add(new CustomFont("CustomFont", "Use a custom font render instead of Minecraft's default", Category.RENDER));

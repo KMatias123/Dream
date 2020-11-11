@@ -1,8 +1,8 @@
 package cat.yoink.dream.api;
 
-import cat.yoink.dream.Client;
 import cat.yoink.dream.api.command.CommandManager;
 import cat.yoink.dream.api.module.Module;
+import cat.yoink.dream.api.module.ModuleManager;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -20,7 +20,7 @@ public class EventHandler
 	{
 		if (!Keyboard.getEventKeyState()) return;
 
-		for (Module module : Client.moduleManager.getModules())
+		for (Module module : ModuleManager.INSTANCE.getModules())
 		{
 			if (module.getBind() == Keyboard.getEventKey())
 			{

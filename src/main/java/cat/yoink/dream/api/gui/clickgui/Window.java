@@ -5,6 +5,7 @@ import cat.yoink.dream.api.gui.clickgui.button.ModuleButton;
 import cat.yoink.dream.api.gui.clickgui.button.SettingButton;
 import cat.yoink.dream.api.module.Category;
 import cat.yoink.dream.api.module.Module;
+import cat.yoink.dream.api.module.ModuleManager;
 import cat.yoink.dream.api.util.font.FontUtil;
 import net.minecraft.client.gui.Gui;
 
@@ -42,7 +43,7 @@ public class Window
 
 		int yOffset = Y + H;
 
-		for (Module module : Client.moduleManager.getModules(category))
+		for (Module module : ModuleManager.INSTANCE.getModules(category))
 		{
 			ModuleButton button = new ModuleButton(module, X, yOffset, W, H);
 			buttons.add(button);
