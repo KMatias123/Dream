@@ -1,6 +1,5 @@
 package cat.yoink.dream.api.gui.clickgui;
 
-import cat.yoink.dream.Client;
 import cat.yoink.dream.api.module.Category;
 import cat.yoink.dream.api.module.ModuleManager;
 import net.minecraft.client.gui.GuiScreen;

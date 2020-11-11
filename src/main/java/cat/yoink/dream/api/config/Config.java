@@ -1,6 +1,5 @@
 package cat.yoink.dream.api.config;
 
-import cat.yoink.dream.Client;
 import cat.yoink.dream.api.module.Module;
 import cat.yoink.dream.api.module.ModuleManager;
 import cat.yoink.dream.api.setting.Setting;
@@ -36,7 +35,7 @@ public class Config extends Thread
         try { FileUtil.saveFile(new File(mainFolder.getAbsolutePath(), SETTINGS), getSettings()); }
         catch (IOException e) { e.printStackTrace(); }
 
-        try { FileUtil.saveFile(new File(mainFolder.getAbsolutePath(), BINDS), Client.moduleManager.getModules().stream().map(module -> module.getName() + ":" + module.getBind()).collect(Collectors.toCollection(ArrayList::new))); }
+        try { FileUtil.saveFile(new File(mainFolder.getAbsolutePath(), BINDS), ModuleManager.INSTANCE.getModules().stream().map(module -> module.getName() + ":" + module.getBind()).collect(Collectors.toCollection(ArrayList::new))); }
         catch(IOException e) { e.printStackTrace(); }
     }
 
@@ -76,7 +75,7 @@ public class Config extends Thread
                 try
                 {
                     String[] split = s.split(":");
-                    Client.moduleManager.getModule(split[0]).setBind(Integer.parseInt(split[1]));
+                    ModuleManager.INSTANCE.getModule(split[0]).setBind(Integer.parseInt(split[1]));
                 }
                 catch (Exception e)
                 {

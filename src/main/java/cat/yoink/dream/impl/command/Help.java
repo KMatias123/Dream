@@ -1,6 +1,5 @@
 package cat.yoink.dream.impl.command;
 
-import cat.yoink.dream.Client;
 import cat.yoink.dream.api.command.Command;
 import cat.yoink.dream.api.command.CommandManager;
 import cat.yoink.dream.api.util.LoggerUtil;

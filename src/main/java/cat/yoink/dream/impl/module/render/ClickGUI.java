@@ -4,10 +4,8 @@ import cat.yoink.dream.Client;
 import cat.yoink.dream.api.module.Category;
 import cat.yoink.dream.api.module.Module;
 import cat.yoink.dream.api.setting.Setting;
-import cat.yoink.dream.api.setting.SettingType;
 import org.lwjgl.input.Keyboard;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**

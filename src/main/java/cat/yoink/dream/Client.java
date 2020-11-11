@@ -1,11 +1,8 @@
 package cat.yoink.dream;
 
 import cat.yoink.dream.api.EventHandler;
-import cat.yoink.dream.api.command.CommandManager;
 import cat.yoink.dream.api.config.Config;
 import cat.yoink.dream.api.gui.clickgui.ClickGUI;
-import cat.yoink.dream.api.module.ModuleManager;
-import cat.yoink.dream.api.setting.SettingManager;
 import cat.yoink.dream.api.util.font.CustomFontRenderer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;

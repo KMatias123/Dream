@@ -1,6 +1,5 @@
 package cat.yoink.dream.api.module;
 
-import cat.yoink.dream.Client;
 import cat.yoink.dream.api.setting.Setting;
 import cat.yoink.dream.api.setting.SettingManager;
 import net.minecraft.client.Minecraft;

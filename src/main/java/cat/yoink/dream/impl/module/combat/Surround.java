@@ -3,7 +3,6 @@ package cat.yoink.dream.impl.module.combat;
 import cat.yoink.dream.api.module.Category;
 import cat.yoink.dream.api.module.Module;
 import cat.yoink.dream.api.setting.Setting;
-import cat.yoink.dream.api.setting.SettingType;
 import cat.yoink.dream.api.util.PlayerUtil;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;

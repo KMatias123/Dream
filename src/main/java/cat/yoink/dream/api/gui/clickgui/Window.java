@@ -1,6 +1,5 @@
 package cat.yoink.dream.api.gui.clickgui;
 
-import cat.yoink.dream.Client;
 import cat.yoink.dream.api.gui.clickgui.button.ModuleButton;
 import cat.yoink.dream.api.gui.clickgui.button.SettingButton;
 import cat.yoink.dream.api.module.Category;
