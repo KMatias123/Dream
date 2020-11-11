@@ -1,5 +1,7 @@
 package cat.yoink.dream.api.module;
 
+import cat.yoink.dream.Client;
+import cat.yoink.dream.api.component.ComponentManager;
 import cat.yoink.dream.api.setting.Setting;
 import cat.yoink.dream.api.setting.SettingManager;
 import net.minecraft.client.Minecraft;
@@ -40,6 +42,7 @@ public class Module
 		setEnabled(true);
 		onEnable();
 		MinecraftForge.EVENT_BUS.register(this);
+		ComponentManager.INSTANCE.getComponents().stream().filter(c -> c.getName().equals(getName())).forEach(c -> c.setShowing(true));
 	}
 
 	public void disable()
@@ -47,6 +50,7 @@ public class Module
 		setEnabled(false);
 		onDisable();
 		MinecraftForge.EVENT_BUS.unregister(this);
+		ComponentManager.INSTANCE.getComponents().stream().filter(c -> c.getName().equals(getName())).forEach(c -> c.setShowing(false));
 	}
 
 	public void toggle()

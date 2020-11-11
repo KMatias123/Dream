@@ -4,6 +4,7 @@ import cat.yoink.dream.impl.module.combat.AutoLog;
 import cat.yoink.dream.impl.module.combat.AutoTrap;
 import cat.yoink.dream.impl.module.combat.Criticals;
 import cat.yoink.dream.impl.module.combat.Surround;
+import cat.yoink.dream.impl.module.component.Watermark;
 import cat.yoink.dream.impl.module.exploit.Blink;
 import cat.yoink.dream.impl.module.exploit.PacketMine;
 import cat.yoink.dream.impl.module.misc.ChatSuffix;
@@ -14,6 +15,7 @@ import cat.yoink.dream.impl.module.movement.Speed;
 import cat.yoink.dream.impl.module.movement.Sprint;
 import cat.yoink.dream.impl.module.render.ClickGUI;
 import cat.yoink.dream.impl.module.render.CustomFont;
+import cat.yoink.dream.impl.module.render.HUDEditor;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -44,6 +46,8 @@ public enum ModuleManager
 		modules.add(new Blink("Blink", "Fake lag", Category.EXPLOIT));
 		modules.add(new AutoLog("AutoLog", "Automatically logs out when your health is low", Category.COMBAT));
 		modules.add(new ReverseStep("ReverseStep", "Moves you faster down", Category.MOVEMENT));
+		modules.add(new Watermark("Watermark", Category.COMPONENT));
+		modules.add(new HUDEditor("HUDEditor", Category.RENDER));
 	}
 
 	public ArrayList<Module> getModules()

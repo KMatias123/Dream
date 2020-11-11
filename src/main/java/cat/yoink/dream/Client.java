@@ -3,6 +3,7 @@ package cat.yoink.dream;
 import cat.yoink.dream.api.EventHandler;
 import cat.yoink.dream.api.config.Config;
 import cat.yoink.dream.api.gui.clickgui.ClickGUI;
+import cat.yoink.dream.api.gui.hudeditor.HUDEditor;
 import cat.yoink.dream.api.util.font.CustomFontRenderer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -19,12 +20,14 @@ public class Client
 {
 	public static CustomFontRenderer customFontRenderer;
 	public static ClickGUI clickGUI;
+	public static HUDEditor hudEditor;
 
 	@Mod.EventHandler
 	public void initialize(FMLInitializationEvent event)
 	{
 		customFontRenderer = new CustomFontRenderer(new Font("Verdana", Font.PLAIN, 19), true, true);
 		clickGUI = new ClickGUI();
+		hudEditor = new HUDEditor();
 
 		Config.loadConfig();
 

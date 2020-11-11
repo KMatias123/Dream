@@ -10,6 +10,7 @@ public enum Category
 	EXPLOIT("Exploit"),
 	RENDER("Visuals"),
 	MOVEMENT("Movement"),
+	COMPONENT("Component"),
 	MISC("Miscellaneous");
 
 	private String name;
