@@ -23,6 +23,7 @@ public class Config extends Thread
     private static final File mainFolder = new File(mc.gameDir + File.separator + "dream");
     private static final String ENABLED_MODULES = "EnabledModules.txt";
     private static final String SETTINGS = "Settings.txt";
+    private static final String BINDS = "Binds.txt";
 
     @Override
     public void run()
@@ -34,6 +35,9 @@ public class Config extends Thread
 
         try { FileUtil.saveFile(new File(mainFolder.getAbsolutePath(), SETTINGS), getSettings()); }
         catch (IOException e) { e.printStackTrace(); }
+
+        try { FileUtil.saveFile(new File(mainFolder.getAbsolutePath(), BINDS), Client.moduleManager.getModules().stream().map(module -> module.getName() + ":" + module.getBind()).collect(Collectors.toCollection(ArrayList::new))); }
+        catch(IOException e) { e.printStackTrace(); }
     }
 
     public static void loadConfig()
@@ -60,6 +64,19 @@ public class Config extends Thread
                 {
                     String[] split = s.split(":");
                     saveSetting(SettingManager.INSTANCE.getSetting(split[1], split[0]), split[2]);
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+
+            for (String s : FileUtil.loadFile(new File(mainFolder.getAbsolutePath(), BINDS)))
+            {
+                try
+                {
+                    String[] split = s.split(":");
+                    Client.moduleManager.getModule(split[0]).setBind(Integer.parseInt(split[1]));
                 }
                 catch (Exception e)
                 {
