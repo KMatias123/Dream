@@ -1,6 +1,7 @@
 package cat.yoink.dream.api;
 
 import cat.yoink.dream.Client;
+import cat.yoink.dream.api.command.CommandManager;
 import cat.yoink.dream.api.module.Module;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.ClientChatEvent;
@@ -33,11 +34,11 @@ public class EventHandler
 	{
 		if (Minecraft.getMinecraft().player == null || Minecraft.getMinecraft().world == null) return;
 
-		if (event.getMessage().startsWith(Client.commandManager.getPrefix()))
+		if (event.getMessage().startsWith(CommandManager.INSTANCE.getPrefix()))
 		{
 			event.setCanceled(true);
 			Minecraft.getMinecraft().ingameGUI.getChatGUI().addToSentMessages(event.getMessage());
-			Client.commandManager.runCommand(event.getMessage());
+			CommandManager.INSTANCE.runCommand(event.getMessage());
 		}
 	}
 

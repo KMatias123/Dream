@@ -24,7 +24,7 @@ public class Command
 
 	public void printUsage()
 	{
-		LoggerUtil.sendMessage("Usage: " + Client.commandManager.getPrefix() + usage);
+		LoggerUtil.sendMessage("Usage: " + CommandManager.INSTANCE.getPrefix() + usage);
 	}
 
 	public String getName()

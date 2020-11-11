@@ -24,12 +24,10 @@ public class Client
 	public static SettingManager settingManager;
 	public static CustomFontRenderer customFontRenderer;
 	public static ClickGUI clickGUI;
-	public static CommandManager commandManager;
 
 	@Mod.EventHandler
 	public void initialize(FMLInitializationEvent event)
 	{
-		commandManager = new CommandManager();
 		settingManager = new SettingManager();
 		moduleManager = new ModuleManager();
 		customFontRenderer = new CustomFontRenderer(new Font("Verdana", Font.PLAIN, 19), true, true);

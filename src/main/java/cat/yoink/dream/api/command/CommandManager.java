@@ -12,12 +12,14 @@ import java.util.ArrayList;
  * @author yoink
  * @since 9/21/2020
  */
-public class CommandManager
+public enum CommandManager
 {
+	INSTANCE;
+
 	private final ArrayList<Command> commands = new ArrayList<>();
 	private String prefix = ".";
 
-	public CommandManager()
+	CommandManager()
 	{
 		commands.add(new Help("Help", new String[]{"h", "help"}, "help"));
 		commands.add(new Prefix("Prefix", new String[]{"prefix"}, "prefix <char>"));

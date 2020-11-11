@@ -2,6 +2,7 @@ package cat.yoink.dream.impl.command;
 
 import cat.yoink.dream.Client;
 import cat.yoink.dream.api.command.Command;
+import cat.yoink.dream.api.command.CommandManager;
 import cat.yoink.dream.api.util.LoggerUtil;
 
 /**
@@ -20,7 +21,7 @@ public class Help extends Command
 	{
 		LoggerUtil.sendMessage("Dream b1");
 
-		for (Command command : Client.commandManager.getCommands())
+		for (Command command : CommandManager.INSTANCE.getCommands())
 		{
 			LoggerUtil.sendMessage(command.getName() + " - " + command.getUsage());
 		}
