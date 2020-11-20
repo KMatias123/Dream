@@ -4,9 +4,7 @@
   "package": "cat.yoink.dream.mixin.mixins.mixin",
   "refmap": "mixins.dream.refmap.json",
   "mixins": [
-    "MinecraftMixin",
-    "NetworkManagerMixin",
-    "TimerMixin"
+    "NetworkManagerMixin"
   ],
   "client": [
     "EntityPlayerSPMixin"
