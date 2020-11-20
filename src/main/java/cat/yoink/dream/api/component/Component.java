@@ -12,12 +12,14 @@ public class Component
     private int h;
     private boolean showing;
 
-    public Component(String name)
+    public Component(final String name)
     {
         this.name = name;
     }
 
-    public void render() { }
+    public void render()
+    {
+    }
 
     public String getName()
     {
@@ -29,7 +31,7 @@ public class Component
         return x;
     }
 
-    public void setX(int x)
+    public void setX(final int x)
     {
         this.x = x;
     }
@@ -39,7 +41,7 @@ public class Component
         return y;
     }
 
-    public void setY(int y)
+    public void setY(final int y)
     {
         this.y = y;
     }
@@ -49,7 +51,7 @@ public class Component
         return w;
     }
 
-    public void setW(int w)
+    public void setW(final int w)
     {
         this.w = w;
     }
@@ -59,7 +61,7 @@ public class Component
         return h;
     }
 
-    public void setH(int h)
+    public void setH(final int h)
     {
         this.h = h;
     }
@@ -69,7 +71,7 @@ public class Component
         return showing;
     }
 
-    public void setShowing(boolean showing)
+    public void setShowing(final boolean showing)
     {
         this.showing = showing;
     }

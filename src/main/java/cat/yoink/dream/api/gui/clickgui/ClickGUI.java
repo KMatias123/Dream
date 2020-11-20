@@ -20,47 +20,47 @@ public class ClickGUI extends GuiScreen
 	{
 		int xOffset = 3;
 
-		for (Category category : Category.values())
+		for (final Category category : Category.values())
 		{
-			Window window = new Window(category, xOffset, 3, 105, 15);
+			final Window window = new Window(category, xOffset, 3, 105, 15);
 			windows.add(window);
 			xOffset += 110;
 		}
 	}
 
 	@Override
-	public void drawScreen(int mouseX, int mouseY, float partialTicks)
+	public void drawScreen(final int mouseX, final int mouseY, final float partialTicks)
 	{
 		doScroll();
 
-		for (Window window : windows)
+		for (final Window window : windows)
 		{
 			window.render(mouseX, mouseY);
 		}
 	}
 
 	@Override
-	protected void mouseClicked(int mouseX, int mouseY, int mouseButton)
+	protected void mouseClicked(final int mouseX, final int mouseY, final int mouseButton)
 	{
-		for (Window window : windows)
+		for (final Window window : windows)
 		{
 			window.mouseDown(mouseX, mouseY, mouseButton);
 		}
 	}
 
 	@Override
-	protected void mouseReleased(int mouseX, int mouseY, int state)
+	protected void mouseReleased(final int mouseX, final int mouseY, final int state)
 	{
-		for (Window window : windows)
+		for (final Window window : windows)
 		{
 			window.mouseUp(mouseX, mouseY);
 		}
 	}
 
 	@Override
-	protected void keyTyped(char typedChar, int keyCode)
+	protected void keyTyped(final char typedChar, final int keyCode)
 	{
-		for (Window window : windows)
+		for (final Window window : windows)
 		{
 			window.keyPress(keyCode);
 		}
@@ -82,7 +82,7 @@ public class ClickGUI extends GuiScreen
 		return false;
 	}
 
-	public void drawGradient(int left, int top, int right, int bottom, int startColor, int endColor)
+	public void drawGradient(final int left, final int top, final int right, final int bottom, final int startColor, final int endColor)
 	{
 		drawGradientRect(left, top, right, bottom, startColor, endColor);
 	}
@@ -90,7 +90,7 @@ public class ClickGUI extends GuiScreen
 	@Override
 	public void onGuiClosed()
 	{
-		for (Window window : windows)
+		for (final Window window : windows)
 		{
 			window.close();
 		}
@@ -100,17 +100,17 @@ public class ClickGUI extends GuiScreen
 
 	private void doScroll()
 	{
-		int w = Mouse.getDWheel();
+		final int w = Mouse.getDWheel();
 		if (w < 0)
 		{
-			for (Window window : windows)
+			for (final Window window : windows)
 			{
 				window.setY(window.getY() - 8);
 			}
 		}
 		else if (w > 0)
 		{
-			for (Window window : windows)
+			for (final Window window : windows)
 			{
 				window.setY(window.getY() + 8);
 			}

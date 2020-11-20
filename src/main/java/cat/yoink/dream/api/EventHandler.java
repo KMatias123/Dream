@@ -20,11 +20,11 @@ import org.lwjgl.input.Keyboard;
 public class EventHandler
 {
 	@SubscribeEvent
-	public void onKeyInput(InputEvent.KeyInputEvent event)
+	public void onKeyInput(final InputEvent.KeyInputEvent event)
 	{
 		if (!Keyboard.getEventKeyState() || Keyboard.getEventKey() == Keyboard.KEY_NONE) return;
 
-		for (Module module : ModuleManager.INSTANCE.getModules())
+		for (final Module module : ModuleManager.INSTANCE.getModules())
 		{
 			if (module.getBind() == Keyboard.getEventKey())
 			{
@@ -34,7 +34,7 @@ public class EventHandler
 	}
 
 	@SubscribeEvent
-	public void onChatSend(ClientChatEvent event)
+	public void onChatSend(final ClientChatEvent event)
 	{
 		if (Minecraft.getMinecraft().player == null || Minecraft.getMinecraft().world == null) return;
 
@@ -47,9 +47,10 @@ public class EventHandler
 	}
 
 	@SubscribeEvent
-	public void onRenderGameOverlay(RenderGameOverlayEvent event)
+	public void onRenderGameOverlay(final RenderGameOverlayEvent event)
 	{
-		if (Minecraft.getMinecraft().player == null || Minecraft.getMinecraft().world == null || !event.getType().equals(RenderGameOverlayEvent.ElementType.TEXT)) return;
+		if (Minecraft.getMinecraft().player == null || Minecraft.getMinecraft().world == null || !event.getType().equals(RenderGameOverlayEvent.ElementType.TEXT))
+			return;
 
 		ComponentManager.INSTANCE.getComponents().stream().filter(Component::isShowing).forEach(Component::render);
 	}

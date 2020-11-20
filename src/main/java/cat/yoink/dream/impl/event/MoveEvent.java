@@ -16,7 +16,7 @@ public class MoveEvent extends Event
 	private double y;
 	private double z;
 
-	public MoveEvent(MoverType type, double x, double y, double z)
+	public MoveEvent(final MoverType type, final double x, final double y, final double z)
 	{
 		this.type = type;
 		this.x = x;
@@ -29,7 +29,7 @@ public class MoveEvent extends Event
 		return type;
 	}
 
-	public void setType(MoverType type)
+	public void setType(final MoverType type)
 	{
 		this.type = type;
 	}
@@ -39,7 +39,7 @@ public class MoveEvent extends Event
 		return x;
 	}
 
-	public void setX(double x)
+	public void setX(final double x)
 	{
 		this.x = x;
 	}
@@ -49,7 +49,7 @@ public class MoveEvent extends Event
 		return y;
 	}
 
-	public void setY(double y)
+	public void setY(final double y)
 	{
 		this.y = y;
 	}
@@ -59,7 +59,7 @@ public class MoveEvent extends Event
 		return z;
 	}
 
-	public void setZ(double z)
+	public void setZ(final double z)
 	{
 		this.z = z;
 	}

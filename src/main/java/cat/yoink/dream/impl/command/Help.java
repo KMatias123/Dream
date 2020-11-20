@@ -10,17 +10,17 @@ import cat.yoink.dream.api.util.LoggerUtil;
  */
 public class Help extends Command
 {
-	public Help(String name, String[] alias, String usage)
+	public Help(final String name, final String[] alias, final String usage)
 	{
 		super(name, alias, usage);
 	}
 
 	@Override
-	public void onTrigger(String arguments)
+	public void onTrigger(final String arguments)
 	{
 		LoggerUtil.sendMessage("Dream b1");
 
-		for (Command command : CommandManager.INSTANCE.getCommands())
+		for (final Command command : CommandManager.INSTANCE.getCommands())
 		{
 			LoggerUtil.sendMessage(command.getName() + " - " + command.getUsage());
 		}

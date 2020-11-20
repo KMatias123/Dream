@@ -16,9 +16,9 @@ public class HUDEditor extends GuiScreen
     private Component dragComponent;
 
     @Override
-    public void drawScreen(int mouseX, int mouseY, float partialTicks)
+    public void drawScreen(final int mouseX, final int mouseY, final float partialTicks)
     {
-        for (Component component : ComponentManager.INSTANCE.getComponents())
+        for (final Component component : ComponentManager.INSTANCE.getComponents())
         {
             if (dragging && dragComponent.equals(component))
             {
@@ -34,9 +34,9 @@ public class HUDEditor extends GuiScreen
     }
 
     @Override
-    protected void mouseClicked(int mouseX, int mouseY, int mouseButton)
+    protected void mouseClicked(final int mouseX, final int mouseY, final int mouseButton)
     {
-        for (Component component : ComponentManager.INSTANCE.getComponents())
+        for (final Component component : ComponentManager.INSTANCE.getComponents())
         {
             if (ModuleManager.INSTANCE.getModule(component.getName()).isEnabled() && isHover(component.getX() - 2, component.getY() - 2, component.getW() + 2, component.getH() + 2, mouseX, mouseY))
             {
@@ -50,7 +50,7 @@ public class HUDEditor extends GuiScreen
     }
 
     @Override
-    protected void mouseReleased(int mouseX, int mouseY, int state)
+    protected void mouseReleased(final int mouseX, final int mouseY, final int state)
     {
         dragging = false;
         dragComponent = null;
@@ -71,7 +71,7 @@ public class HUDEditor extends GuiScreen
         return false;
     }
 
-    private boolean isHover(int X, int Y, int W, int H, int mX, int mY)
+    private boolean isHover(final int X, final int Y, final int W, final int H, final int mX, final int mY)
     {
         return mX >= X && mX <= X + W && mY >= Y && mY <= Y + H;
     }

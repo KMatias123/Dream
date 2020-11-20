@@ -14,16 +14,16 @@ public enum SettingManager
 
 	private final ArrayList<Setting> settings = new ArrayList<>();
 
-	public void addSetting(Setting setting)
+	public void addSetting(final Setting setting)
 	{
 		settings.add(setting);
 	}
 
-	public ArrayList<Setting> getSettings(Module module)
+	public ArrayList<Setting> getSettings(final Module module)
 	{
-		ArrayList<Setting> sets = new ArrayList<>();
+		final ArrayList<Setting> sets = new ArrayList<>();
 
-		for (Setting setting : settings)
+		for (final Setting setting : settings)
 		{
 			if (setting.getModule().equals(module))
 			{
@@ -34,9 +34,9 @@ public enum SettingManager
 		return sets;
 	}
 
-	public Setting getSetting(String moduleName, String name)
+	public Setting getSetting(final String moduleName, final String name)
 	{
-		for (Setting setting : settings)
+		for (final Setting setting : settings)
 		{
 			if (setting.getModule().getName().equalsIgnoreCase(moduleName) && setting.getName().equalsIgnoreCase(name))
 			{

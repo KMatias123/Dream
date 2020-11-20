@@ -12,13 +12,13 @@ import cat.yoink.dream.api.util.font.FontUtil;
  */
 public class Font extends Command
 {
-	public Font(String name, String[] alias, String usage)
+	public Font(final String name, final String[] alias, final String usage)
 	{
 		super(name, alias, usage);
 	}
 
 	@Override
-	public void onTrigger(String arguments)
+	public void onTrigger(final String arguments)
 	{
 		if (arguments.equals(""))
 		{
@@ -33,7 +33,7 @@ public class Font extends Command
 				Client.customFontRenderer = new CustomFontRenderer(new java.awt.Font(arguments, java.awt.Font.PLAIN, 19), true, false);
 				LoggerUtil.sendMessage("New font set to " + arguments);
 			}
-			catch (Exception e)
+			catch (final Exception e)
 			{
 				LoggerUtil.sendMessage("Failed to set font");
 			}

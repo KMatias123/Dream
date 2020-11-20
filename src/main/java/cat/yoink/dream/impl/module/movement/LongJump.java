@@ -23,7 +23,7 @@ public class LongJump extends Module
 	private boolean jumped = false;
 	private boolean boostable = false;
 
-	public LongJump(String name, String description, Category category)
+	public LongJump(final String name, final String description, final Category category)
 	{
 		super(name, description, category);
 
@@ -32,7 +32,7 @@ public class LongJump extends Module
 	}
 
 	@SubscribeEvent
-	public void onTick(TickEvent.ClientTickEvent event)
+	public void onTick(final TickEvent.ClientTickEvent event)
 	{
 		if (nullCheck()) return;
 
@@ -55,7 +55,7 @@ public class LongJump extends Module
 			}
 
 			if (!(mc.player.movementInput.moveForward != 0f || mc.player.movementInput.moveStrafe != 0f)) return;
-			double yaw = PlayerUtil.getDirection();
+			final double yaw = PlayerUtil.getDirection();
 			mc.player.motionX = -Math.sin(yaw) * (((float) Math.sqrt(mc.player.motionX * mc.player.motionX + mc.player.motionZ * mc.player.motionZ)) * (boostable ? (speed.getIntegerValue() / 10f) : 1f));
 			mc.player.motionZ = Math.cos(yaw) * (((float) Math.sqrt(mc.player.motionX * mc.player.motionX + mc.player.motionZ * mc.player.motionZ)) * (boostable ? (speed.getIntegerValue() / 10f) : 1f));
 
@@ -64,7 +64,7 @@ public class LongJump extends Module
 	}
 
 	@SubscribeEvent
-	public void onMove(MoveEvent event)
+	public void onMove(final MoveEvent event)
 	{
 		if (nullCheck()) return;
 
@@ -78,7 +78,7 @@ public class LongJump extends Module
 	}
 
 	@SubscribeEvent
-	public void onJump(LivingEvent.LivingJumpEvent event)
+	public void onJump(final LivingEvent.LivingJumpEvent event)
 	{
 		if ((mc.player != null && mc.world != null) && event.getEntity() == mc.player && (mc.player.movementInput.moveForward != 0f || mc.player.movementInput.moveStrafe != 0f))
 		{

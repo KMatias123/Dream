@@ -4,7 +4,7 @@ import cat.yoink.dream.api.component.Component;
 
 public class Watermark extends Component
 {
-    public Watermark(String name)
+    public Watermark(final String name)
     {
         super(name);
 

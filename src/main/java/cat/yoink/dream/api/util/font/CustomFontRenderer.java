@@ -19,35 +19,35 @@ public class CustomFontRenderer extends CustomFont
 
 	private final int[] colorCode = new int[32];
 
-	public CustomFontRenderer(Font font, boolean antiAlias, boolean fractionalMetrics)
+	public CustomFontRenderer(final Font font, final boolean antiAlias, final boolean fractionalMetrics)
 	{
 		super(font, antiAlias, fractionalMetrics);
 		setupMinecraftColorcodes();
 		setupBoldItalicIDs();
 	}
 
-	public void drawString(String text, float x, float y, int color)
+	public void drawString(final String text, final float x, final float y, final int color)
 	{
 		drawString(text, x, y, color, false);
 	}
 
-	public void drawStringWithShadow(String text, double x, double y, int color)
+	public void drawStringWithShadow(final String text, final double x, final double y, final int color)
 	{
 		drawString(text, x + 1D, y + 1D, color, true);
 		drawString(text, x, y, color, false);
 	}
 
-	public void drawCenteredStringWithShadow(String text, float x, float y, int color)
+	public void drawCenteredStringWithShadow(final String text, final float x, final float y, final int color)
 	{
 		drawStringWithShadow(text, x - getStringWidth(text) / 2f, y, color);
 	}
 
-	public void drawCenteredString(String text, float x, float y, int color)
+	public void drawCenteredString(final String text, final float x, final float y, final int color)
 	{
 		drawString(text, x - getStringWidth(text) / 2f, y, color);
 	}
 
-	public void drawString(String text, double x, double y, int c, boolean shadow)
+	public void drawString(final String text, double x, double y, final int c, final boolean shadow)
 	{
 		int color = c;
 
@@ -60,7 +60,7 @@ public class CustomFontRenderer extends CustomFont
 		if (shadow) color = (color & 0xFCFCFC) >> 2 | color & 0xFF000000;
 
 		CharData[] currentData = this.charData;
-		float alpha = (color >> 24 & 0xFF) / 255.0F;
+		final float alpha = (color >> 24 & 0xFF) / 255.0F;
 		boolean bold = false;
 		boolean italic = false;
 		boolean strikethrough = false;
@@ -72,13 +72,13 @@ public class CustomFontRenderer extends CustomFont
 		GlStateManager.enableBlend();
 		GlStateManager.blendFunc(770, 771);
 		GlStateManager.color((color >> 16 & 0xFF) / 255.0F, (color >> 8 & 0xFF) / 255.0F, (color & 0xFF) / 255.0F, alpha);
-		int size = text.length();
+		final int size = text.length();
 		GlStateManager.enableTexture2D();
 		GlStateManager.bindTexture(tex.getGlTextureId());
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, tex.getGlTextureId());
 		for (int i = 0; i < size; i++)
 		{
-			char character = text.charAt(i);
+			final char character = text.charAt(i);
 			if (character == '§')
 			{
 				int colorIndex = 21;
@@ -86,7 +86,7 @@ public class CustomFontRenderer extends CustomFont
 				{
 					colorIndex = "0123456789abcdefklmnor".indexOf(text.charAt(i + 1));
 				}
-				catch (Exception ignored)
+				catch (final Exception ignored)
 				{
 				}
 				if (colorIndex < 16)
@@ -99,7 +99,7 @@ public class CustomFontRenderer extends CustomFont
 					currentData = this.charData;
 					if (colorIndex < 0) colorIndex = 15;
 					if (shadow) colorIndex += 16;
-					int cCode = this.colorCode[colorIndex];
+					final int cCode = this.colorCode[colorIndex];
 					GlStateManager.color((cCode >> 16 & 0xFF) / 255.0F, (cCode >> 8 & 0xFF) / 255.0F, (cCode & 0xFF) / 255.0F, alpha);
 				}
 				else if (colorIndex == 17)
@@ -149,8 +149,10 @@ public class CustomFontRenderer extends CustomFont
 				GL11.glBegin(4);
 				drawChar(currentData, character, (float) x, (float) y);
 				GL11.glEnd();
-				if (strikethrough) drawLine(x, y + currentData[character].height / 2f, x + currentData[character].width - 8.0D, y + currentData[character].height / 2f);
-				if (underline) drawLine(x, y + currentData[character].height - 2.0D, x + currentData[character].width - 8.0D, y + currentData[character].height - 2.0D);
+				if (strikethrough)
+					drawLine(x, y + currentData[character].height / 2f, x + currentData[character].width - 8.0D, y + currentData[character].height / 2f);
+				if (underline)
+					drawLine(x, y + currentData[character].height - 2.0D, x + currentData[character].width - 8.0D, y + currentData[character].height - 2.0D);
 				x += currentData[character].width - 8 + this.charOffset;
 			}
 		}
@@ -159,17 +161,17 @@ public class CustomFontRenderer extends CustomFont
 	}
 
 	@Override
-	public int getStringWidth(String text)
+	public int getStringWidth(final String text)
 	{
 		if (text == null) return 0;
 
 		int width = 0;
-		CharData[] currentData = this.charData;
-		int size = text.length();
+		final CharData[] currentData = this.charData;
+		final int size = text.length();
 
 		for (int i = 0; i < size; i++)
 		{
-			char character = text.charAt(i);
+			final char character = text.charAt(i);
 			if (character == '§') i++;
 			else if (character < currentData.length) width += currentData[character].width - 8 + this.charOffset;
 		}
@@ -177,19 +179,19 @@ public class CustomFontRenderer extends CustomFont
 		return width / 2;
 	}
 
-	public void setFont(Font font)
+	public void setFont(final Font font)
 	{
 		super.setFont(font);
 		setupBoldItalicIDs();
 	}
 
-	public void setAntiAlias(boolean antiAlias)
+	public void setAntiAlias(final boolean antiAlias)
 	{
 		super.setAntiAlias(antiAlias);
 		setupBoldItalicIDs();
 	}
 
-	public void setFractionalMetrics(boolean fractionalMetrics)
+	public void setFractionalMetrics(final boolean fractionalMetrics)
 	{
 		super.setFractionalMetrics(fractionalMetrics);
 		setupBoldItalicIDs();
@@ -206,7 +208,7 @@ public class CustomFontRenderer extends CustomFont
 		texItalicBold = setupTexture(this.font.deriveFont(Font.BOLD | Font.ITALIC), this.antiAlias, this.fractionalMetrics, this.boldItalicChars);
 	}
 
-	private void drawLine(double x, double y, double x1, double y1)
+	private void drawLine(final double x, final double y, final double x1, final double y1)
 	{
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		GL11.glLineWidth((float) 1.0);
@@ -221,7 +223,7 @@ public class CustomFontRenderer extends CustomFont
 	{
 		for (int index = 0; index < 32; index++)
 		{
-			int noClue = (index >> 3 & 0x1) * 85;
+			final int noClue = (index >> 3 & 0x1) * 85;
 			int red = (index >> 2 & 0x1) * 170 + noClue;
 			int green = (index >> 1 & 0x1) * 170 + noClue;
 			int blue = (index & 0x1) * 170 + noClue;

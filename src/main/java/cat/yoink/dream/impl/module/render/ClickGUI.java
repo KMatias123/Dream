@@ -14,7 +14,7 @@ import java.util.Arrays;
  */
 public class ClickGUI extends Module
 {
-	public ClickGUI(String name, String description, Category category)
+	public ClickGUI(final String name, final String description, final Category category)
 	{
 		super(name, description, category);
 

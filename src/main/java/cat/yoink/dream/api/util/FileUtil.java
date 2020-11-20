@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public class FileUtil
 {
-    public static void saveFile(File file, ArrayList<String> content) throws IOException
+    public static void saveFile(final File file, final ArrayList<String> content) throws IOException
     {
-        BufferedWriter out = new BufferedWriter(new FileWriter(file));
+        final BufferedWriter out = new BufferedWriter(new FileWriter(file));
 
-        for (String s : content)
+        for (final String s : content)
         {
             out.write(s);
             out.write("\r\n");
@@ -17,13 +17,13 @@ public class FileUtil
         out.close();
     }
 
-    public static ArrayList<String> loadFile(File file) throws IOException
+    public static ArrayList<String> loadFile(final File file) throws IOException
     {
-        ArrayList<String> content = new ArrayList<>();
+        final ArrayList<String> content = new ArrayList<>();
 
-        FileInputStream stream = new FileInputStream(file.getAbsolutePath());
-        DataInputStream in = new DataInputStream(stream);
-        BufferedReader br = new BufferedReader(new InputStreamReader(in));
+        final FileInputStream stream = new FileInputStream(file.getAbsolutePath());
+        final DataInputStream in = new DataInputStream(stream);
+        final BufferedReader br = new BufferedReader(new InputStreamReader(in));
         String line;
 
         while ((line = br.readLine()) != null) content.add(line);

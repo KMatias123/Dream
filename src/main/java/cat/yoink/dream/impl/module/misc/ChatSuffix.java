@@ -9,15 +9,15 @@ import java.util.Arrays;
 
 public class ChatSuffix extends Module
 {
-	public ChatSuffix(String name, String description, Category category)
+	public ChatSuffix(final String name, final String description, final Category category)
 	{
 		super(name, description, category);
 	}
 
 	@SubscribeEvent
-	public void onChat(ClientChatEvent event)
+	public void onChat(final ClientChatEvent event)
 	{
-		for (String s : Arrays.asList("/", ".", "-", ",", ":", ";", "'", "\"", "+", "\\"))
+		for (final String s : Arrays.asList("/", ".", "-", ",", ":", ";", "'", "\"", "+", "\\"))
 		{
 			if (event.getMessage().startsWith(s)) return;
 		}

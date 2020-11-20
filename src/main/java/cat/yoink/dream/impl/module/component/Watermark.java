@@ -5,7 +5,7 @@ import cat.yoink.dream.api.module.Module;
 
 public class Watermark extends Module
 {
-    public Watermark(String name, Category category)
+    public Watermark(final String name, final Category category)
     {
         super(name, category);
     }

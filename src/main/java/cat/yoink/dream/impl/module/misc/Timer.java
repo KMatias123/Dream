@@ -14,7 +14,7 @@ public class Timer extends Module
 {
 	private final Setting speed = new Setting("Speed", this, 20, 1, 300);
 
-	public Timer(String name, String description, Category category)
+	public Timer(final String name, final String description, final Category category)
 	{
 		super(name, description, category);
 
@@ -22,7 +22,7 @@ public class Timer extends Module
 	}
 
 	@SubscribeEvent
-	public void onTick(TickEvent.ClientTickEvent event)
+	public void onTick(final TickEvent.ClientTickEvent event)
 	{
 		mc.timer.tickLength = 50f / (speed.getIntegerValue() / 10f);
 	}

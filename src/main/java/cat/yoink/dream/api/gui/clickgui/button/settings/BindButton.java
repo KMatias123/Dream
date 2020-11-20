@@ -16,13 +16,13 @@ public class BindButton extends SettingButton
 	private final Module module;
 	private boolean binding;
 
-	public BindButton(Module module, int x, int y, int w, int h)
+	public BindButton(final Module module, final int x, final int y, final int w, final int h)
 	{
 		super(module, x, y, w, h);
 		this.module = module;
 	}
 
-	public void render(int mX, int mY)
+	public void render(final int mX, final int mY)
 	{
 		drawButton(mX, mY);
 
@@ -38,14 +38,14 @@ public class BindButton extends SettingButton
 			{
 				FontUtil.drawStringWithShadow(Keyboard.getKeyName(module.getBind()), (float) ((getX() + getW() - 6) - FontUtil.getStringWidth(Keyboard.getKeyName(module.getBind()))), (float) (getY() + 4), new Color(255, 255, 255, 255).getRGB());
 			}
-			catch (Exception e)
+			catch (final Exception e)
 			{
 				FontUtil.drawStringWithShadow("NONE", (float) ((getX() + getW() - 6) - FontUtil.getStringWidth("NONE")), (float) (getY() + 4), new Color(255, 255, 255, 255).getRGB());
 			}
 		}
 	}
 
-	public void mouseDown(int mX, int mY, int mB)
+	public void mouseDown(final int mX, final int mY, final int mB)
 	{
 		if (isHover(getX(), getY(), getW(), getH() - 1, mX, mY))
 		{
@@ -53,7 +53,7 @@ public class BindButton extends SettingButton
 		}
 	}
 
-	public void keyPress(int key)
+	public void keyPress(final int key)
 	{
 		if (binding)
 		{

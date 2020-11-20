@@ -15,7 +15,7 @@ public class EnumButton extends SettingButton
 {
 	private final Setting setting;
 
-	public EnumButton(Module module, Setting setting, int X, int Y, int W, int H)
+	public EnumButton(final Module module, final Setting setting, final int X, final int Y, final int W, final int H)
 	{
 		super(module, X, Y, W, H);
 		this.setting = setting;
@@ -23,7 +23,7 @@ public class EnumButton extends SettingButton
 
 
 	@Override
-	public void render(int mX, int mY)
+	public void render(final int mX, final int mY)
 	{
 		drawButton(mX, mY);
 
@@ -32,7 +32,7 @@ public class EnumButton extends SettingButton
 	}
 
 	@Override
-	public void mouseDown(int mX, int mY, int mB)
+	public void mouseDown(final int mX, final int mY, final int mB)
 	{
 		if (isHover(getX(), getY(), getW(), getH() - 1, mX, mY))
 		{
@@ -40,7 +40,7 @@ public class EnumButton extends SettingButton
 			{
 				int i = 0;
 				int enumIndex = 0;
-				for (String enumName : setting.getEnumValues())
+				for (final String enumName : setting.getEnumValues())
 				{
 					if (enumName.equals(setting.getEnumValue())) enumIndex = i;
 					i++;
@@ -53,7 +53,7 @@ public class EnumButton extends SettingButton
 				{
 					enumIndex++;
 					i = 0;
-					for (String enumName : setting.getEnumValues())
+					for (final String enumName : setting.getEnumValues())
 					{
 						if (i == enumIndex) setting.setEnumValue(enumName);
 						i++;
@@ -64,7 +64,7 @@ public class EnumButton extends SettingButton
 			{
 				int i = 0;
 				int enumIndex = 0;
-				for (String enumName : setting.getEnumValues())
+				for (final String enumName : setting.getEnumValues())
 				{
 					if (enumName.equals(setting.getEnumValue())) enumIndex = i;
 					i++;
@@ -77,7 +77,7 @@ public class EnumButton extends SettingButton
 				{
 					enumIndex--;
 					i = 0;
-					for (String enumName : setting.getEnumValues())
+					for (final String enumName : setting.getEnumValues())
 					{
 						if (i == enumIndex) setting.setEnumValue(enumName);
 						i++;

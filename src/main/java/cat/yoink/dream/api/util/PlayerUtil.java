@@ -41,11 +41,11 @@ public class PlayerUtil
 		return Minecraft.getMinecraft().player.moveForward != 0.0 || Minecraft.getMinecraft().player.moveStrafing != 0.0;
 	}
 
-	public static int getSlot(Item item)
+	public static int getSlot(final Item item)
 	{
 		for (int i = 0; i < 9; i++)
 		{
-			Item item1 = Minecraft.getMinecraft().player.inventory.getStackInSlot(i).getItem();
+			final Item item1 = Minecraft.getMinecraft().player.inventory.getStackInSlot(i).getItem();
 
 			if (item.equals(item1))
 			{
@@ -55,11 +55,11 @@ public class PlayerUtil
 		return -1;
 	}
 
-	public static int getSlot(Block block)
+	public static int getSlot(final Block block)
 	{
 		for (int i = 0; i < 9; i++)
 		{
-			Item item = Minecraft.getMinecraft().player.inventory.getStackInSlot(i).getItem();
+			final Item item = Minecraft.getMinecraft().player.inventory.getStackInSlot(i).getItem();
 
 			if (item instanceof ItemBlock && ((ItemBlock) item).getBlock().equals(block))
 			{
@@ -69,15 +69,15 @@ public class PlayerUtil
 		return -1;
 	}
 
-	public static void placeBlock(BlockPos pos)
+	public static void placeBlock(final BlockPos pos)
 	{
-		for (EnumFacing enumFacing : EnumFacing.values())
+		for (final EnumFacing enumFacing : EnumFacing.values())
 		{
 			if (!mc.world.getBlockState(pos.offset(enumFacing)).getBlock().equals(Blocks.AIR) && !isIntercepted(pos))
 			{
-				Vec3d vec = new Vec3d(pos.getX() + 0.5D + (double) enumFacing.getXOffset() * 0.5D, pos.getY() + 0.5D + (double) enumFacing.getYOffset() * 0.5D, pos.getZ() + 0.5D + (double) enumFacing.getZOffset() * 0.5D);
+				final Vec3d vec = new Vec3d(pos.getX() + 0.5D + (double) enumFacing.getXOffset() * 0.5D, pos.getY() + 0.5D + (double) enumFacing.getYOffset() * 0.5D, pos.getZ() + 0.5D + (double) enumFacing.getZOffset() * 0.5D);
 
-				float[] old = new float[]{mc.player.rotationYaw, mc.player.rotationPitch};
+				final float[] old = new float[]{mc.player.rotationYaw, mc.player.rotationPitch};
 
 				mc.player.connection.sendPacket(new CPacketPlayer.Rotation((float) Math.toDegrees(Math.atan2((vec.z - mc.player.posZ), (vec.x - mc.player.posX))) - 90.0F, (float) (-Math.toDegrees(Math.atan2((vec.y - (mc.player.posY + (double) mc.player.getEyeHeight())), (Math.sqrt((vec.x - mc.player.posX) * (vec.x - mc.player.posX) + (vec.z - mc.player.posZ) * (vec.z - mc.player.posZ)))))), mc.player.onGround));
 				mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.START_SNEAKING));
@@ -91,9 +91,9 @@ public class PlayerUtil
 		}
 	}
 
-	public static boolean isIntercepted(BlockPos pos)
+	public static boolean isIntercepted(final BlockPos pos)
 	{
-		for (Entity entity : mc.world.loadedEntityList)
+		for (final Entity entity : mc.world.loadedEntityList)
 		{
 			if (new AxisAlignedBB(pos).intersects(entity.getEntityBoundingBox())) return true;
 		}

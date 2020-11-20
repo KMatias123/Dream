@@ -15,7 +15,7 @@ public enum Category
 
 	private String name;
 
-	Category(String name)
+	Category(final String name)
 	{
 		setName(name);
 	}
@@ -25,7 +25,7 @@ public enum Category
 		return name;
 	}
 
-	public void setName(String name)
+	public void setName(final String name)
 	{
 		this.name = name;
 	}

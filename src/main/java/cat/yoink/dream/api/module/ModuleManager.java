@@ -55,9 +55,9 @@ public enum ModuleManager
 		return modules;
 	}
 
-	public Module getModule(String name)
+	public Module getModule(final String name)
 	{
-		for (Module module : modules)
+		for (final Module module : modules)
 		{
 			if (module.getName().equalsIgnoreCase(name)) return module;
 		}
@@ -65,11 +65,11 @@ public enum ModuleManager
 		return null;
 	}
 
-	public ArrayList<Module> getModules(Category category)
+	public ArrayList<Module> getModules(final Category category)
 	{
-		ArrayList<Module> mods = new ArrayList<>();
+		final ArrayList<Module> mods = new ArrayList<>();
 
-		for (Module module : modules)
+		for (final Module module : modules)
 		{
 			if (module.getCategory().equals(category)) mods.add(module);
 		}

@@ -32,7 +32,7 @@ public class Window
 	private boolean opening;
 	private boolean closing;
 
-	public Window(Category category, int x, int y, int w, int h)
+	public Window(final Category category, final int x, final int y, final int w, final int h)
 	{
 		this.category = category;
 		X = x;
@@ -42,16 +42,16 @@ public class Window
 
 		int yOffset = Y + H;
 
-		for (Module module : ModuleManager.INSTANCE.getModules(category))
+		for (final Module module : ModuleManager.INSTANCE.getModules(category))
 		{
-			ModuleButton button = new ModuleButton(module, X, yOffset, W, H);
+			final ModuleButton button = new ModuleButton(module, X, yOffset, W, H);
 			buttons.add(button);
 			yOffset += H;
 		}
 		showingButtonCount = buttons.size();
 	}
 
-	public void render(int mX, int mY)
+	public void render(final int mX, final int mY)
 	{
 		if (dragging)
 		{
@@ -68,7 +68,7 @@ public class Window
 			int modY = Y + H;
 
 			int moduleRenderCount = 0;
-			for (ModuleButton moduleButton : buttons)
+			for (final ModuleButton moduleButton : buttons)
 			{
 				moduleRenderCount++;
 
@@ -90,7 +90,7 @@ public class Window
 					{
 
 						int settingRenderCount = 0;
-						for (SettingButton settingButton : moduleButton.getButtons())
+						for (final SettingButton settingButton : moduleButton.getButtons())
 						{
 							settingRenderCount++;
 
@@ -132,7 +132,7 @@ public class Window
 
 	}
 
-	public void mouseDown(int mX, int mY, int mB)
+	public void mouseDown(final int mX, final int mY, final int mB)
 	{
 		if (isHover(X, Y, W, H, mX, mY))
 		{
@@ -148,7 +148,7 @@ public class Window
 				{
 					showingButtonCount = buttons.size();
 					closing = true;
-					for (ModuleButton button : buttons)
+					for (final ModuleButton button : buttons)
 					{
 						if (button.isOpen())
 						{
@@ -167,31 +167,31 @@ public class Window
 
 		if (open)
 		{
-			for (ModuleButton button : buttons)
+			for (final ModuleButton button : buttons)
 			{
 				button.mouseDown(mX, mY, mB);
 			}
 		}
 	}
 
-	public void mouseUp(int mX, int mY)
+	public void mouseUp(final int mX, final int mY)
 	{
 		dragging = false;
 
 		if (open)
 		{
-			for (ModuleButton button : buttons)
+			for (final ModuleButton button : buttons)
 			{
 				button.mouseUp(mX, mY);
 			}
 		}
 	}
 
-	public void keyPress(int key)
+	public void keyPress(final int key)
 	{
 		if (open)
 		{
-			for (ModuleButton button : buttons)
+			for (final ModuleButton button : buttons)
 			{
 				button.keyPress(key);
 			}
@@ -200,13 +200,13 @@ public class Window
 
 	public void close()
 	{
-		for (ModuleButton button : buttons)
+		for (final ModuleButton button : buttons)
 		{
 			button.close();
 		}
 	}
 
-	private boolean isHover(int X, int Y, int W, int H, int mX, int mY)
+	private boolean isHover(final int X, final int Y, final int W, final int H, final int mX, final int mY)
 	{
 		return mX >= X && mX <= X + W && mY >= Y && mY <= Y + H;
 	}
@@ -216,7 +216,7 @@ public class Window
 		return Y;
 	}
 
-	public void setY(int y)
+	public void setY(final int y)
 	{
 		Y = y;
 	}

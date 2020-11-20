@@ -10,13 +10,13 @@ import cat.yoink.dream.api.util.LoggerUtil;
  */
 public class Prefix extends Command
 {
-	public Prefix(String name, String[] alias, String usage)
+	public Prefix(final String name, final String[] alias, final String usage)
 	{
 		super(name, alias, usage);
 	}
 
 	@Override
-	public void onTrigger(String arguments)
+	public void onTrigger(final String arguments)
 	{
 		if (arguments.equals(""))
 		{

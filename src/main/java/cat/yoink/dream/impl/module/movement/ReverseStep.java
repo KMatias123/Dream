@@ -14,7 +14,7 @@ public class ReverseStep extends Module
 {
     Setting holeOnly = new Setting("HoleOnly", this, true);
 
-    public ReverseStep(String name, String description, Category category)
+    public ReverseStep(final String name, final String description, final Category category)
     {
         super(name, description, category);
 
@@ -22,7 +22,7 @@ public class ReverseStep extends Module
     }
 
     @SubscribeEvent
-    public void onTickClientTick(TickEvent.ClientTickEvent event)
+    public void onTickClientTick(final TickEvent.ClientTickEvent event)
     {
         if (nullCheck() || mc.player.isInLava() || mc.player.isInWater()) return;
 
@@ -34,14 +34,14 @@ public class ReverseStep extends Module
 
     private boolean fallingIntoHole()
     {
-        Vec3d vec = new Vec3d(mc.player.lastTickPosX + (mc.player.posX - mc.player.lastTickPosX) * mc.getRenderPartialTicks(), mc.player.lastTickPosY + (mc.player.posY - mc.player.lastTickPosY) * mc.getRenderPartialTicks(), mc.player.lastTickPosZ + (mc.player.posZ - mc.player.lastTickPosZ) * mc.getRenderPartialTicks());
-        BlockPos pos = new BlockPos(vec.x, vec.y - 1, vec.z);
-        BlockPos[] posList = { pos.north(), pos.south(), pos.east(), pos.west(), pos.down() };
+        final Vec3d vec = new Vec3d(mc.player.lastTickPosX + (mc.player.posX - mc.player.lastTickPosX) * mc.getRenderPartialTicks(), mc.player.lastTickPosY + (mc.player.posY - mc.player.lastTickPosY) * mc.getRenderPartialTicks(), mc.player.lastTickPosZ + (mc.player.posZ - mc.player.lastTickPosZ) * mc.getRenderPartialTicks());
+        final BlockPos pos = new BlockPos(vec.x, vec.y - 1, vec.z);
+        final BlockPos[] posList = {pos.north(), pos.south(), pos.east(), pos.west(), pos.down()};
 
         int blocks = 0;
-        for (BlockPos blockPos : posList)
+        for (final BlockPos blockPos : posList)
         {
-            Block block = mc.world.getBlockState(blockPos).getBlock();
+            final Block block = mc.world.getBlockState(blockPos).getBlock();
             if (block == Blocks.OBSIDIAN || block == Blocks.BEDROCK) blocks++;
         }
         return blocks == 5;

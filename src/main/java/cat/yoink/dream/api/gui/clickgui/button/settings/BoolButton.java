@@ -16,14 +16,14 @@ public class BoolButton extends SettingButton
 {
 	private final Setting setting;
 
-	public BoolButton(Module module, Setting setting, int X, int Y, int W, int H)
+	public BoolButton(final Module module, final Setting setting, final int X, final int Y, final int W, final int H)
 	{
 		super(module, X, Y, W, H);
 		this.setting = setting;
 	}
 
 	@Override
-	public void render(int mX, int mY)
+	public void render(final int mX, final int mY)
 	{
 		if (setting.getBooleanValue())
 		{
@@ -46,7 +46,7 @@ public class BoolButton extends SettingButton
 	}
 
 	@Override
-	public void mouseDown(int mX, int mY, int mB)
+	public void mouseDown(final int mX, final int mY, final int mB)
 	{
 		if (isHover(getX(), getY(), getW(), getH() - 1, mX, mY) && (mB == 0 || mB == 1))
 		{

@@ -13,13 +13,13 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  */
 public class Criticals extends Module
 {
-	public Criticals(String name, String description, Category category)
+	public Criticals(final String name, final String description, final Category category)
 	{
 		super(name, description, category);
 	}
 
 	@SubscribeEvent
-	public void onPacketSend(PacketSendEvent event)
+	public void onPacketSend(final PacketSendEvent event)
 	{
 		if (nullCheck()) return;
 

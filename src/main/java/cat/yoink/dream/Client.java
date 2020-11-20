@@ -23,7 +23,7 @@ public class Client
 	public static HUDEditor hudEditor;
 
 	@Mod.EventHandler
-	public void initialize(FMLInitializationEvent event)
+	public void initialize(final FMLInitializationEvent event)
 	{
 		customFontRenderer = new CustomFontRenderer(new Font("Verdana", Font.PLAIN, 19), true, true);
 		clickGUI = new ClickGUI();

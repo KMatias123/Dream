@@ -20,7 +20,7 @@ public class SliderButton extends SettingButton
 	protected boolean dragging;
 	protected int sliderWidth;
 
-	SliderButton(Module module, Setting setting, int X, int Y, int W, int H)
+	SliderButton(final Module module, final Setting setting, final int X, final int Y, final int W, final int H)
 	{
 		super(module, X, Y, W, H);
 		this.dragging = false;
@@ -28,12 +28,12 @@ public class SliderButton extends SettingButton
 		this.setting = setting;
 	}
 
-	protected void updateSlider(int mouseX)
+	protected void updateSlider(final int mouseX)
 	{
 	}
 
 	@Override
-	public void render(int mX, int mY)
+	public void render(final int mX, final int mY)
 	{
 		updateSlider(mX);
 
@@ -79,7 +79,7 @@ public class SliderButton extends SettingButton
 		FontUtil.drawStringWithShadow(String.valueOf(setting.getIntegerValue()), (float) ((getX() + getW() - 6) - FontUtil.getStringWidth(String.valueOf(setting.getIntegerValue()))), (float) (getY() + 4), new Color(255, 255, 255, 255).getRGB());
 	}
 
-	public void mouseDown(int mX, int mY, int mB)
+	public void mouseDown(final int mX, final int mY, final int mB)
 	{
 		if (isHover(getX(), getY(), getW(), getH() - 1, mX, mY))
 		{
@@ -87,7 +87,7 @@ public class SliderButton extends SettingButton
 		}
 	}
 
-	public void mouseUp(int mouseX, int mouseY)
+	public void mouseUp(final int mouseX, final int mouseY)
 	{
 		dragging = false;
 	}
@@ -101,7 +101,7 @@ public class SliderButton extends SettingButton
 	{
 		private final Setting intSetting;
 
-		public IntSlider(Module module, Setting setting, int X, int Y, int W, int H)
+		public IntSlider(final Module module, final Setting setting, final int X, final int Y, final int W, final int H)
 		{
 			super(module, setting, X, Y, W, H);
 			intSetting = setting;

@@ -8,18 +8,22 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 /**
  * @author yagel15637
  */
-public class Sprint extends Module {
-    public Sprint(String name, String description, Category category) {
+public class Sprint extends Module
+{
+    public Sprint(final String name, final String description, final Category category)
+    {
         super(name, description, category);
     }
 
     @SubscribeEvent
-    public void onUpdate(final TickEvent.ClientTickEvent event) {
+    public void onUpdate(final TickEvent.ClientTickEvent event)
+    {
         if (nullCheck()) return;
 
         if (mc.player.movementInput.moveForward == 0f && mc.player.movementInput.moveStrafe == 0f) return;
 
-        if (!mc.player.isSprinting()) {
+        if (!mc.player.isSprinting())
+        {
             mc.player.setSprinting(true);
         }
     }

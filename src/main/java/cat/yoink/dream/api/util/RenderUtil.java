@@ -13,7 +13,7 @@ import org.lwjgl.opengl.GL11;
  */
 public class RenderUtil
 {
-	public static void drawBox(AxisAlignedBB box, float r, float g, float b, float a)
+	public static void drawBox(final AxisAlignedBB box, final float r, final float g, final float b, final float a)
 	{
 		GlStateManager.pushMatrix();
 		GlStateManager.enableBlend();
@@ -36,9 +36,9 @@ public class RenderUtil
 		GlStateManager.popMatrix();
 	}
 
-	public static void drawBoxFromBlockpos(BlockPos blockPos, float r, float g, float b, float a)
+	public static void drawBoxFromBlockpos(final BlockPos blockPos, final float r, final float g, final float b, final float a)
 	{
-		AxisAlignedBB axisAlignedBB = new AxisAlignedBB(blockPos.getX() - Minecraft.getMinecraft().getRenderManager().viewerPosX, blockPos.getY() - Minecraft.getMinecraft().getRenderManager().viewerPosY, blockPos.getZ() - Minecraft.getMinecraft().getRenderManager().viewerPosZ, blockPos.getX() + 1 - Minecraft.getMinecraft().getRenderManager().viewerPosX, blockPos.getY() + 1 - Minecraft.getMinecraft().getRenderManager().viewerPosY, blockPos.getZ() + 1 - Minecraft.getMinecraft().getRenderManager().viewerPosZ);
+		final AxisAlignedBB axisAlignedBB = new AxisAlignedBB(blockPos.getX() - Minecraft.getMinecraft().getRenderManager().viewerPosX, blockPos.getY() - Minecraft.getMinecraft().getRenderManager().viewerPosY, blockPos.getZ() - Minecraft.getMinecraft().getRenderManager().viewerPosZ, blockPos.getX() + 1 - Minecraft.getMinecraft().getRenderManager().viewerPosX, blockPos.getY() + 1 - Minecraft.getMinecraft().getRenderManager().viewerPosY, blockPos.getZ() + 1 - Minecraft.getMinecraft().getRenderManager().viewerPosZ);
 		drawBox(axisAlignedBB, r, g, b, a);
 	}
 }

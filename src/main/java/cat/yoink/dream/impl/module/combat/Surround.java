@@ -37,11 +37,11 @@ public class Surround extends Module
             new Vec3d(-1, 0, 0),
             new Vec3d(0, 0, 1),
             new Vec3d(0, 0, -1)
-        ));
+    ));
 
     private boolean finished;
 
-    public Surround(String name, String description, Category category)
+    public Surround(final String name, final String description, final Category category)
     {
         super(name, description, category);
 
@@ -56,21 +56,22 @@ public class Surround extends Module
     }
 
     @SubscribeEvent
-    public void onTick(TickEvent.ClientTickEvent event)
+    public void onTick(final TickEvent.ClientTickEvent event)
     {
         if (nullCheck()) return;
 
-        if (finished && (disable.getEnumValue().equalsIgnoreCase("WhenDone") || (disable.getEnumValue().equalsIgnoreCase("OnLeave") && !mc.player.onGround))) disable();
+        if (finished && (disable.getEnumValue().equalsIgnoreCase("WhenDone") || (disable.getEnumValue().equalsIgnoreCase("OnLeave") && !mc.player.onGround)))
+            disable();
 
         int blocksPlaced = 0;
 
-        for (Vec3d position : positions)
+        for (final Vec3d position : positions)
         {
-            BlockPos pos = new BlockPos(position.add(mc.player.getPositionVector()));
+            final BlockPos pos = new BlockPos(position.add(mc.player.getPositionVector()));
 
             if (mc.world.getBlockState(pos).getBlock().equals(Blocks.AIR))
             {
-                int oldSlot = mc.player.inventory.currentItem;
+                final int oldSlot = mc.player.inventory.currentItem;
                 mc.player.inventory.currentItem = PlayerUtil.getSlot(Blocks.OBSIDIAN);
                 PlayerUtil.placeBlock(pos);
                 mc.player.inventory.currentItem = oldSlot;

@@ -11,7 +11,7 @@ public class AutoLog extends Module
 {
     private final Setting health = new Setting("Health", this, 10, 1, 30);
 
-    public AutoLog(String name, String description, Category category)
+    public AutoLog(final String name, final String description, final Category category)
     {
         super(name, description, category);
 
@@ -19,7 +19,7 @@ public class AutoLog extends Module
     }
 
     @SubscribeEvent
-    public void onTick(TickEvent.ClientTickEvent event)
+    public void onTick(final TickEvent.ClientTickEvent event)
     {
         if (nullCheck()) return;
 

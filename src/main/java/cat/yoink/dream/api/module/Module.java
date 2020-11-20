@@ -20,13 +20,13 @@ public class Module
 	private boolean enabled;
 	public final Minecraft mc = Minecraft.getMinecraft();
 
-	public Module(String name, Category category)
+	public Module(final String name, final Category category)
 	{
 		this.name = name;
 		this.category = category;
 	}
 
-	public Module(String name, String description, Category category)
+	public Module(final String name, final String description, final Category category)
 	{
 		this.name = name;
 		this.description = description;
@@ -34,8 +34,13 @@ public class Module
 	}
 
 
-	public void onEnable() {}
-	public void onDisable() {}
+	public void onEnable()
+	{
+	}
+
+	public void onDisable()
+	{
+	}
 
 	public void enable()
 	{
@@ -64,7 +69,7 @@ public class Module
 		return mc.player == null || mc.world == null;
 	}
 
-	public void addSetting(Setting setting)
+	public void addSetting(final Setting setting)
 	{
 		SettingManager.INSTANCE.addSetting(setting);
 	}
@@ -75,7 +80,7 @@ public class Module
 		return name;
 	}
 
-	public void setName(String name)
+	public void setName(final String name)
 	{
 		this.name = name;
 	}
@@ -85,7 +90,7 @@ public class Module
 		return description;
 	}
 
-	public void setDescription(String description)
+	public void setDescription(final String description)
 	{
 		this.description = description;
 	}
@@ -95,7 +100,7 @@ public class Module
 		return category;
 	}
 
-	public void setCategory(Category category)
+	public void setCategory(final Category category)
 	{
 		this.category = category;
 	}
@@ -105,7 +110,7 @@ public class Module
 		return bind;
 	}
 
-	public void setBind(int bind)
+	public void setBind(final int bind)
 	{
 		this.bind = bind;
 	}
@@ -115,7 +120,7 @@ public class Module
 		return enabled;
 	}
 
-	public void setEnabled(boolean enabled)
+	public void setEnabled(final boolean enabled)
 	{
 		this.enabled = enabled;
 	}

@@ -41,7 +41,7 @@ public class AutoTrap extends Module
 
     private boolean finished;
 
-    public AutoTrap(String name, String description, Category category)
+    public AutoTrap(final String name, final String description, final Category category)
     {
         super(name, description, category);
 
@@ -56,7 +56,7 @@ public class AutoTrap extends Module
     }
 
     @SubscribeEvent
-    public void onTick(TickEvent.ClientTickEvent event)
+    public void onTick(final TickEvent.ClientTickEvent event)
     {
         if (nullCheck()) return;
 
@@ -64,16 +64,16 @@ public class AutoTrap extends Module
 
         int blocksPlaced = 0;
 
-        for (Vec3d position : positions)
+        for (final Vec3d position : positions)
         {
-            EntityPlayer closestPlayer = getClosestPlayer();
+            final EntityPlayer closestPlayer = getClosestPlayer();
             if (closestPlayer != null)
             {
-                BlockPos pos = new BlockPos(position.add(getClosestPlayer().getPositionVector()));
+                final BlockPos pos = new BlockPos(position.add(getClosestPlayer().getPositionVector()));
 
                 if (mc.world.getBlockState(pos).getBlock().equals(Blocks.AIR))
                 {
-                    int oldSlot = mc.player.inventory.currentItem;
+                    final int oldSlot = mc.player.inventory.currentItem;
                     mc.player.inventory.currentItem = PlayerUtil.getSlot(Blocks.OBSIDIAN);
                     PlayerUtil.placeBlock(pos);
                     mc.player.inventory.currentItem = oldSlot;
@@ -90,11 +90,11 @@ public class AutoTrap extends Module
     {
         EntityPlayer closestPlayer = null;
         double range = 1000;
-        for (EntityPlayer playerEntity : mc.world.playerEntities)
+        for (final EntityPlayer playerEntity : mc.world.playerEntities)
         {
             if (!playerEntity.equals(mc.player))
             {
-                double distance = mc.player.getDistance(playerEntity);
+                final double distance = mc.player.getDistance(playerEntity);
                 if (distance < range)
                 {
                     closestPlayer = playerEntity;

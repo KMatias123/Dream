@@ -10,15 +10,15 @@ import cat.yoink.dream.api.util.SessionUtil;
  */
 public class Login extends Command
 {
-	public Login(String name, String[] alias, String usage)
+	public Login(final String name, final String[] alias, final String usage)
 	{
 		super(name, alias, usage);
 	}
 
 	@Override
-	public void onTrigger(String arguments)
+	public void onTrigger(final String arguments)
 	{
-		String[] split = arguments.split(" ");
+		final String[] split = arguments.split(" ");
 		try
 		{
 			if (split[0].equals("") || split[1].equals(""))
@@ -27,7 +27,7 @@ public class Login extends Command
 				return;
 			}
 		}
-		catch (Exception ignored)
+		catch (final Exception ignored)
 		{
 			printUsage();
 			return;

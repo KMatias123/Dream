@@ -18,9 +18,9 @@ public class SettingButton
 	private Module module;
 	private int X;
 	private int Y;
-	private int W;
+	private final int W;
 
-	public SettingButton(Module module, int x, int y, int w, int h)
+	public SettingButton(final Module module, final int x, final int y, final int w, final int h)
 	{
 		this.module = module;
 		X = x;
@@ -29,19 +29,19 @@ public class SettingButton
 		H = h;
 	}
 
-	public void render(int mX, int mY)
+	public void render(final int mX, final int mY)
 	{
 	}
 
-	public void mouseDown(int mX, int mY, int mB)
+	public void mouseDown(final int mX, final int mY, final int mB)
 	{
 	}
 
-	public void mouseUp(int mX, int mY)
+	public void mouseUp(final int mX, final int mY)
 	{
 	}
 
-	public void keyPress(int key)
+	public void keyPress(final int key)
 	{
 	}
 
@@ -49,7 +49,7 @@ public class SettingButton
 	{
 	}
 
-	public void drawButton(int mX, int mY)
+	public void drawButton(final int mX, final int mY)
 	{
 		if (isHover(getX(), getY(), getW(), getH() - 1, mX, mY))
 		{
@@ -92,7 +92,7 @@ public class SettingButton
 		return module;
 	}
 
-	public void setModule(Module module)
+	public void setModule(final Module module)
 	{
 		this.module = module;
 	}
@@ -102,7 +102,7 @@ public class SettingButton
 		return X;
 	}
 
-	public void setX(int x)
+	public void setX(final int x)
 	{
 		X = x;
 	}
@@ -112,7 +112,7 @@ public class SettingButton
 		return Y;
 	}
 
-	public void setY(int y)
+	public void setY(final int y)
 	{
 		Y = y;
 	}
@@ -128,7 +128,7 @@ public class SettingButton
 	}
 
 
-	public boolean isHover(int X, int Y, int W, int H, int mX, int mY)
+	public boolean isHover(final int X, final int Y, final int W, final int H, final int mX, final int mY)
 	{
 		return mX >= X && mX <= X + W && mY >= Y && mY <= Y + H;
 	}

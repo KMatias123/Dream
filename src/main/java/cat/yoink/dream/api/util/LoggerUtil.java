@@ -9,14 +9,14 @@ import net.minecraft.util.text.TextComponentString;
  */
 public class LoggerUtil
 {
-	public static void sendMessage(String message)
+	public static void sendMessage(final String message)
 	{
 		sendMessage(message, true);
 	}
 
-	public static void sendMessage(String message, boolean waterMark)
+	public static void sendMessage(final String message, final boolean waterMark)
 	{
-		StringBuilder messageBuilder = new StringBuilder();
+		final StringBuilder messageBuilder = new StringBuilder();
 		if (waterMark) messageBuilder.append("&7[&9Dream&7] ");
 		messageBuilder.append("&7").append(message);
 		Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessage(new TextComponentString(messageBuilder.toString().replace("&", "§")));

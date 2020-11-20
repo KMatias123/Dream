@@ -29,14 +29,32 @@ public class Config extends Thread
     {
         if (!mainFolder.exists() && !mainFolder.mkdirs()) System.out.println("Failed to create config folder");
 
-        try { FileUtil.saveFile(new File(mainFolder.getAbsolutePath(), ENABLED_MODULES), ModuleManager.INSTANCE.getEnabledModules().stream().map(Module::getName).collect(Collectors.toCollection(ArrayList::new))); }
-        catch (IOException e) { e.printStackTrace(); }
+        try
+        {
+            FileUtil.saveFile(new File(mainFolder.getAbsolutePath(), ENABLED_MODULES), ModuleManager.INSTANCE.getEnabledModules().stream().map(Module::getName).collect(Collectors.toCollection(ArrayList::new)));
+        }
+        catch (final IOException e)
+        {
+            e.printStackTrace();
+        }
 
-        try { FileUtil.saveFile(new File(mainFolder.getAbsolutePath(), SETTINGS), getSettings()); }
-        catch (IOException e) { e.printStackTrace(); }
+        try
+        {
+            FileUtil.saveFile(new File(mainFolder.getAbsolutePath(), SETTINGS), getSettings());
+        }
+        catch (final IOException e)
+        {
+            e.printStackTrace();
+        }
 
-        try { FileUtil.saveFile(new File(mainFolder.getAbsolutePath(), BINDS), ModuleManager.INSTANCE.getModules().stream().map(module -> module.getName() + ":" + module.getBind()).collect(Collectors.toCollection(ArrayList::new))); }
-        catch(IOException e) { e.printStackTrace(); }
+        try
+        {
+            FileUtil.saveFile(new File(mainFolder.getAbsolutePath(), BINDS), ModuleManager.INSTANCE.getModules().stream().map(module -> module.getName() + ":" + module.getBind()).collect(Collectors.toCollection(ArrayList::new)));
+        }
+        catch (final IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public static void loadConfig()
@@ -45,45 +63,45 @@ public class Config extends Thread
 
         try
         {
-            for (String s : FileUtil.loadFile(new File(mainFolder.getAbsolutePath(), ENABLED_MODULES)))
+            for (final String s : FileUtil.loadFile(new File(mainFolder.getAbsolutePath(), ENABLED_MODULES)))
             {
                 try
                 {
                     ModuleManager.INSTANCE.getModule(s).enable();
                 }
-                catch (Exception e)
+                catch (final Exception e)
                 {
                     e.printStackTrace();
                 }
             }
 
-            for (String s : FileUtil.loadFile(new File(mainFolder.getAbsolutePath(), SETTINGS)))
+            for (final String s : FileUtil.loadFile(new File(mainFolder.getAbsolutePath(), SETTINGS)))
             {
                 try
                 {
-                    String[] split = s.split(":");
+                    final String[] split = s.split(":");
                     saveSetting(SettingManager.INSTANCE.getSetting(split[1], split[0]), split[2]);
                 }
-                catch (Exception e)
+                catch (final Exception e)
                 {
                     e.printStackTrace();
                 }
             }
 
-            for (String s : FileUtil.loadFile(new File(mainFolder.getAbsolutePath(), BINDS)))
+            for (final String s : FileUtil.loadFile(new File(mainFolder.getAbsolutePath(), BINDS)))
             {
                 try
                 {
-                    String[] split = s.split(":");
+                    final String[] split = s.split(":");
                     ModuleManager.INSTANCE.getModule(split[0]).setBind(Integer.parseInt(split[1]));
                 }
-                catch (Exception e)
+                catch (final Exception e)
                 {
                     e.printStackTrace();
                 }
             }
         }
-        catch (IOException e)
+        catch (final IOException e)
         {
             e.printStackTrace();
         }
@@ -91,9 +109,9 @@ public class Config extends Thread
 
     private static ArrayList<String> getSettings()
     {
-        ArrayList<String> content = new ArrayList<>();
+        final ArrayList<String> content = new ArrayList<>();
 
-        for (Setting setting : SettingManager.INSTANCE.getSettings())
+        for (final Setting setting : SettingManager.INSTANCE.getSettings())
         {
             switch (setting.getType())
             {
@@ -114,7 +132,7 @@ public class Config extends Thread
         return content;
     }
 
-    private static void saveSetting(Setting setting, String value)
+    private static void saveSetting(final Setting setting, final String value)
     {
         switch (setting.getType())
         {

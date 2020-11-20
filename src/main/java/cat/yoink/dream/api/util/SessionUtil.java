@@ -16,10 +16,10 @@ import java.net.Proxy;
  */
 public class SessionUtil
 {
-	public static Session createSession(String username, String password, Proxy proxy) throws AuthenticationException
+	public static Session createSession(final String username, final String password, final Proxy proxy) throws AuthenticationException
 	{
-		YggdrasilAuthenticationService service = new YggdrasilAuthenticationService(proxy, "");
-		YggdrasilUserAuthentication auth = (YggdrasilUserAuthentication) service
+		final YggdrasilAuthenticationService service = new YggdrasilAuthenticationService(proxy, "");
+		final YggdrasilUserAuthentication auth = (YggdrasilUserAuthentication) service
 				.createUserAuthentication(Agent.MINECRAFT);
 
 		auth.setUsername(username);
@@ -30,18 +30,18 @@ public class SessionUtil
 				auth.getAuthenticatedToken(), "mojang");
 	}
 
-	public static boolean login(String email, String password)
+	public static boolean login(final String email, final String password)
 	{
 		try
 		{
-			Session session = createSession(email, password, Proxy.NO_PROXY);
-			Field field = Minecraft.class.getDeclaredField("session");
+			final Session session = createSession(email, password, Proxy.NO_PROXY);
+			final Field field = Minecraft.class.getDeclaredField("session");
 			field.setAccessible(true);
 			field.set(Minecraft.getMinecraft(), session);
 
 			return true;
 		}
-		catch (Exception ignored)
+		catch (final Exception ignored)
 		{
 			return false;
 		}

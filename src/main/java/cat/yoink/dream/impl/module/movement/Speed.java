@@ -38,7 +38,7 @@ public class Speed extends Module
 	private int cooldown;
 	private int jumps;
 
-	public Speed(String name, String description, Category category)
+	public Speed(final String name, final String description, final Category category)
 	{
 		super(name, description, category);
 
@@ -62,11 +62,11 @@ public class Speed extends Module
 		currentSpeed = 0.0;
 		currentStage = 2;
 
-		 mc.timer.tickLength = 50f;
+		mc.timer.tickLength = 50f;
 	}
 
 	@SubscribeEvent
-	public void onTick(TickEvent.ClientTickEvent event)
+	public void onTick(final TickEvent.ClientTickEvent event)
 	{
 		if (nullCheck()) return;
 
@@ -76,13 +76,13 @@ public class Speed extends Module
 	}
 
 	@SubscribeEvent
-	public void onUpdateWalkingPlayer(WalkEvent event)
+	public void onUpdateWalkingPlayer(final WalkEvent event)
 	{
 		distance = Math.sqrt((mc.player.posX - mc.player.prevPosX) * (mc.player.posX - mc.player.prevPosX) + (mc.player.posZ - mc.player.prevPosZ) * (mc.player.posZ - mc.player.prevPosZ));
 	}
 
 	@SubscribeEvent
-	public void onMove(MoveEvent event)
+	public void onMove(final MoveEvent event)
 	{
 		if (mode.getEnumValue().equalsIgnoreCase("Strafe"))
 		{
@@ -146,8 +146,8 @@ public class Speed extends Module
 				else if (forward < 0.0f) forward = -1.0f;
 			}
 
-			double motionX = Math.cos(Math.toRadians(yaw + 90.0f));
-			double motionZ = Math.sin(Math.toRadians(yaw + 90.0f));
+			final double motionX = Math.cos(Math.toRadians(yaw + 90.0f));
+			final double motionZ = Math.sin(Math.toRadians(yaw + 90.0f));
 
 			if (cooldown == 0)
 			{
@@ -183,8 +183,8 @@ public class Speed extends Module
 							mc.player.movementInput.moveForward = -1.0f;
 					}
 
-					double cos = Math.cos(Math.toRadians(rotation + 90.0f));
-					double sin = Math.sin(Math.toRadians(rotation + 90.0f));
+					final double cos = Math.cos(Math.toRadians(rotation + 90.0f));
+					final double sin = Math.sin(Math.toRadians(rotation + 90.0f));
 					mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX + (mc.player.movementInput.moveForward * d * cos + (double) mc.player.movementInput.moveStrafe * d * sin), mc.player.posY, mc.player.posZ + (mc.player.movementInput.moveForward * d * sin - (double) mc.player.movementInput.moveStrafe * d * cos), mc.player.onGround));
 				}
 				mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX + mc.player.motionX, 0.0, mc.player.posZ + mc.player.motionZ, mc.player.onGround));
@@ -193,7 +193,7 @@ public class Speed extends Module
 	}
 
 	@SubscribeEvent
-	public void onWalk(WalkEvent event)
+	public void onWalk(final WalkEvent event)
 	{
 		if (nullCheck()) return;
 
@@ -206,14 +206,14 @@ public class Speed extends Module
 			if (mc.player.onGround)
 			{
 				mc.player.motionY = (jumps <= 1) ? 0.42 : 0.4;
-				float f = mc.player.rotationYaw * 0.017453292f;
+				final float f = mc.player.rotationYaw * 0.017453292f;
 				mc.player.motionX -= Math.sin(f) * 0.2f;
 				mc.player.motionZ += Math.cos(f) * 0.2f;
 				jumps++;
 			}
 			else if (jumps <= 1) mc.player.motionY = -5.0;
 
-			double yaw = PlayerUtil.getDirection();
+			final double yaw = PlayerUtil.getDirection();
 			mc.player.motionX = -Math.sin(yaw) * Math.sqrt(mc.player.motionX * mc.player.motionX + mc.player.motionZ * mc.player.motionZ);
 			mc.player.motionZ = Math.cos(yaw) * Math.sqrt(mc.player.motionX * mc.player.motionX + mc.player.motionZ * mc.player.motionZ);
 		}

@@ -20,7 +20,7 @@ public class Setting
 	private String enumValue;
 	private List<String> enumValues;
 
-	public Setting(String name, Module module, int intValue, int intMinValue, int intMaxValue)
+	public Setting(final String name, final Module module, final int intValue, final int intMinValue, final int intMaxValue)
 	{
 		this.name = name;
 		this.module = module;
@@ -30,7 +30,7 @@ public class Setting
 		this.type = SettingType.INTEGER;
 	}
 
-	public Setting(String name, Module module, boolean boolValue)
+	public Setting(final String name, final Module module, final boolean boolValue)
 	{
 		this.name = name;
 		this.module = module;
@@ -38,7 +38,7 @@ public class Setting
 		this.type = SettingType.BOOLEAN;
 	}
 
-	public Setting(String name, Module module, List<String> enumValues)
+	public Setting(final String name, final Module module, final List<String> enumValues)
 	{
 		this.name = name;
 		this.module = module;
@@ -67,7 +67,7 @@ public class Setting
 		return booleanValue;
 	}
 
-	public void setBooleanValue(boolean booleanValue)
+	public void setBooleanValue(final boolean booleanValue)
 	{
 		this.booleanValue = booleanValue;
 	}
@@ -77,7 +77,7 @@ public class Setting
 		return integerValue;
 	}
 
-	public void setIntegerValue(int integerValue)
+	public void setIntegerValue(final int integerValue)
 	{
 		this.integerValue = integerValue;
 	}
@@ -97,9 +97,9 @@ public class Setting
 		return enumValue;
 	}
 
-	public void setEnumValue(String enumValue)
+	public void setEnumValue(final String enumValue)
 	{
-		this.enumValue = enumValues.contains(enumValue)? enumValue : this.enumValue; // only change value if list includes it.
+		this.enumValue = enumValues.contains(enumValue) ? enumValue : this.enumValue; // only change value if list includes it.
 	}
 
 	public List<String> getEnumValues()

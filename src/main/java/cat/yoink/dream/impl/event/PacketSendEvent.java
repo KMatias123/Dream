@@ -13,7 +13,7 @@ public class PacketSendEvent extends Event
 {
 	private Packet<?> packet;
 
-	public PacketSendEvent(Packet<?> packet)
+	public PacketSendEvent(final Packet<?> packet)
 	{
 		this.packet = packet;
 	}
@@ -23,7 +23,7 @@ public class PacketSendEvent extends Event
 		return packet;
 	}
 
-	public void setPacket(Packet<?> packet)
+	public void setPacket(final Packet<?> packet)
 	{
 		this.packet = packet;
 	}

@@ -15,12 +15,12 @@ public class FontUtil
 {
 	private static final FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
 
-	public static int getStringWidth(String text)
+	public static int getStringWidth(final String text)
 	{
 		return customFont() ? (Client.customFontRenderer.getStringWidth(text) + 3) : fontRenderer.getStringWidth(text);
 	}
 
-	public static void drawString(String text, double x, double y, int color)
+	public static void drawString(final String text, final double x, final double y, final int color)
 	{
 		if (customFont())
 		{
@@ -32,7 +32,7 @@ public class FontUtil
 		}
 	}
 
-	public static void drawStringWithShadow(String text, double x, double y, int color)
+	public static void drawStringWithShadow(final String text, final double x, final double y, final int color)
 	{
 		if (customFont())
 		{
@@ -44,7 +44,7 @@ public class FontUtil
 		}
 	}
 
-	public static void drawCenteredStringWithShadow(String text, float x, float y, int color)
+	public static void drawCenteredStringWithShadow(final String text, final float x, final float y, final int color)
 	{
 		if (customFont())
 		{
@@ -56,7 +56,7 @@ public class FontUtil
 		}
 	}
 
-	public static void drawCenteredString(String text, float x, float y, int color)
+	public static void drawCenteredString(final String text, final float x, final float y, final int color)
 	{
 		if (customFont())
 		{
@@ -73,9 +73,9 @@ public class FontUtil
 		return customFont() ? (Client.customFontRenderer.fontHeight / 2) - 1 : fontRenderer.FONT_HEIGHT;
 	}
 
-	public static boolean validateFont(String font)
+	public static boolean validateFont(final String font)
 	{
-		for (String s : GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames())
+		for (final String s : GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames())
 		{
 			if (s.equals(font))
 			{

@@ -34,7 +34,7 @@ public class ModuleButton
 	private boolean opening;
 	private boolean closing;
 
-	public ModuleButton(Module module, int x, int y, int w, int h)
+	public ModuleButton(final Module module, final int x, final int y, final int w, final int h)
 	{
 		this.module = module;
 		X = x;
@@ -43,7 +43,7 @@ public class ModuleButton
 		H = h;
 
 		int n = 0;
-		for (Setting setting : SettingManager.INSTANCE.getSettings(module))
+		for (final Setting setting : SettingManager.INSTANCE.getSettings(module))
 		{
 			SettingButton settingButton = null;
 
@@ -72,7 +72,7 @@ public class ModuleButton
 		buttons.add(new BindButton(module, X, Y + H + n, W, H));
 	}
 
-	public void render(int mX, int mY)
+	public void render(final int mX, final int mY)
 	{
 
 		if (module.isEnabled())
@@ -99,7 +99,7 @@ public class ModuleButton
 				switch (SettingManager.INSTANCE.getSetting("ClickGUI", "Color").getEnumValue())
 				{
 					case "Red":
-						Client.clickGUI.drawGradient(X, Y, X + W , Y + H, new Color(220, 30, 30, 232).getRGB(), new Color(216, 30, 30, 232).getRGB());
+						Client.clickGUI.drawGradient(X, Y, X + W, Y + H, new Color(220, 30, 30, 232).getRGB(), new Color(216, 30, 30, 232).getRGB());
 						break;
 					case "Green":
 						Client.clickGUI.drawGradient(X, Y, X + W, Y + H, new Color(30, 220, 30, 232).getRGB(), new Color(30, 216, 30, 232).getRGB());
@@ -118,7 +118,7 @@ public class ModuleButton
 		{
 			if (isHover(X, Y, W, H - 1, mX, mY))
 			{
-				Client.clickGUI.drawGradient(X, Y, X + W , Y + H, new Color(220, 220, 220, 232).getRGB(), new Color(218, 218, 218, 232).getRGB());
+				Client.clickGUI.drawGradient(X, Y, X + W, Y + H, new Color(220, 220, 220, 232).getRGB(), new Color(218, 218, 218, 232).getRGB());
 			}
 			else
 			{
@@ -154,7 +154,7 @@ public class ModuleButton
 		}
 	}
 
-	public void mouseDown(int mX, int mY, int mB)
+	public void mouseDown(final int mX, final int mY, final int mB)
 	{
 		if (isHover(X, Y, W, H - 1, mX, mY))
 		{
@@ -174,24 +174,24 @@ public class ModuleButton
 
 		if (open)
 		{
-			for (SettingButton settingButton : buttons)
+			for (final SettingButton settingButton : buttons)
 			{
 				settingButton.mouseDown(mX, mY, mB);
 			}
 		}
 	}
 
-	public void mouseUp(int mX, int mY)
+	public void mouseUp(final int mX, final int mY)
 	{
-		for (SettingButton settingButton : buttons)
+		for (final SettingButton settingButton : buttons)
 		{
 			settingButton.mouseUp(mX, mY);
 		}
 	}
 
-	public void keyPress(int key)
+	public void keyPress(final int key)
 	{
-		for (SettingButton settingButton : buttons)
+		for (final SettingButton settingButton : buttons)
 		{
 			settingButton.keyPress(key);
 		}
@@ -199,24 +199,24 @@ public class ModuleButton
 
 	public void close()
 	{
-		for (SettingButton button : buttons)
+		for (final SettingButton button : buttons)
 		{
 			button.close();
 		}
 	}
 
-	private boolean isHover(int X, int Y, int W, int H, int mX, int mY)
+	private boolean isHover(final int X, final int Y, final int W, final int H, final int mX, final int mY)
 	{
 		return mX >= X && mX <= X + W && mY >= Y && mY <= Y + H;
 	}
 
 
-	public void setX(int x)
+	public void setX(final int x)
 	{
 		X = x;
 	}
 
-	public void setY(int y)
+	public void setY(final int y)
 	{
 		Y = y;
 	}

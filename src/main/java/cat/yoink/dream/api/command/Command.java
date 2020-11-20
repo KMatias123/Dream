@@ -12,14 +12,16 @@ public class Command
 	private String[] alias;
 	private String usage;
 
-	public Command(String name, String[] alias, String usage)
+	public Command(final String name, final String[] alias, final String usage)
 	{
 		setName(name);
 		setAlias(alias);
 		setUsage(usage);
 	}
 
-	public void onTrigger(String arguments) {}
+	public void onTrigger(final String arguments)
+	{
+	}
 
 	public void printUsage()
 	{
@@ -31,7 +33,7 @@ public class Command
 		return name;
 	}
 
-	public void setName(String name)
+	public void setName(final String name)
 	{
 		this.name = name;
 	}
@@ -41,7 +43,7 @@ public class Command
 		return alias;
 	}
 
-	public void setAlias(String[] alias)
+	public void setAlias(final String[] alias)
 	{
 		this.alias = alias;
 	}
@@ -51,7 +53,7 @@ public class Command
 		return usage;
 	}
 
-	public void setUsage(String usage)
+	public void setUsage(final String usage)
 	{
 		this.usage = usage;
 	}

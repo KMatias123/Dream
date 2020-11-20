@@ -6,7 +6,7 @@ import cat.yoink.dream.api.module.Module;
 
 public class HUDEditor extends Module
 {
-    public HUDEditor(String name, Category category)
+    public HUDEditor(final String name, final Category category)
     {
         super(name, category);
     }

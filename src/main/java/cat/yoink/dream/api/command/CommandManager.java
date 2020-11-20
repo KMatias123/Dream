@@ -27,16 +27,16 @@ public enum CommandManager
 		commands.add(new Font("Font", new String[]{"font"}, "font <font>"));
 	}
 
-	public void runCommand(String args)
+	public void runCommand(final String args)
 	{
 		boolean found = false;
-		String[] split = args.split(" ");
-		String startCommand = split[0];
-		String arguments = args.substring(startCommand.length()).trim();
+		final String[] split = args.split(" ");
+		final String startCommand = split[0];
+		final String arguments = args.substring(startCommand.length()).trim();
 
-		for (Command command : getCommands())
+		for (final Command command : getCommands())
 		{
-			for (String alias : command.getAlias())
+			for (final String alias : command.getAlias())
 			{
 				if (startCommand.equals(getPrefix() + alias))
 				{
@@ -62,7 +62,7 @@ public enum CommandManager
 		return prefix;
 	}
 
-	public void setPrefix(String prefix)
+	public void setPrefix(final String prefix)
 	{
 		this.prefix = prefix;
 	}
