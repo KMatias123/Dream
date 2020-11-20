@@ -6,8 +6,6 @@ import cat.yoink.dream.api.setting.Setting;
 import cat.yoink.dream.api.util.PlayerUtil;
 import cat.yoink.dream.impl.event.MoveEvent;
 import cat.yoink.dream.impl.event.WalkEvent;
-import cat.yoink.dream.mixin.mixins.accessor.IMinecraft;
-import cat.yoink.dream.mixin.mixins.accessor.ITimer;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -64,7 +62,7 @@ public class Speed extends Module
 		currentSpeed = 0.0;
 		currentStage = 2;
 
-		((ITimer) ((IMinecraft) mc).getTimer()).setTickLength(50f);
+		 mc.timer.tickLength = 50f;
 	}
 
 	@SubscribeEvent
@@ -73,8 +71,8 @@ public class Speed extends Module
 		if (nullCheck()) return;
 
 		if (useTimer.getBooleanValue())
-			((ITimer) ((IMinecraft) mc).getTimer()).setTickLength(50f / ((timerSpeed.getIntegerValue() + 100) / 100f));
-		else ((ITimer) ((IMinecraft) mc).getTimer()).setTickLength(50f);
+			mc.timer.tickLength = 50f / (timerSpeed.getIntegerValue() + 100) / 100f;
+		else mc.timer.tickLength = 50f;
 	}
 
 	@SubscribeEvent
